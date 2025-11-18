@@ -1712,7 +1712,8 @@ section {
         backdrop-filter: blur(20px);
         padding: var(--spacing-lg);
         transition: var(--transition-normal);
-        gap: 0;
+        gap: 1rem;
+        align-items: stretch;
     }
 
     .nav-menu.active {
@@ -1720,8 +1721,18 @@ section {
     }
 
     .nav-link {
-        padding: var(--spacing-md) 0;
+        padding: 1.5rem 1rem;
         border-bottom: 1px solid rgba(0, 240, 255, 0.1);
+        font-size: 1.25rem;
+        text-align: left;
+        display: block;
+        min-height: 60px;
+        display: flex;
+        align-items: center;
+    }
+
+    .nav-link:last-child {
+        border-bottom: none;
     }
 
     .mobile-menu-toggle {
