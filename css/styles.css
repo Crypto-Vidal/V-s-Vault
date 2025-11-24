@@ -1235,6 +1235,132 @@ section {
 }
 
 /* ==========================================
+   VIDEO & LINKS SECTIONS
+   ========================================== */
+.videos-section,
+.links-section {
+    padding: var(--spacing-xl) 0;
+}
+
+.section-subtitle {
+    text-align: center;
+    color: var(--gray-light);
+    font-size: 1.125rem;
+    margin-top: var(--spacing-sm);
+    margin-bottom: var(--spacing-lg);
+}
+
+/* Video Grid */
+.videos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+    gap: var(--spacing-lg);
+}
+
+.video-item .holo-panel {
+    padding: var(--spacing-md);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.video-wrapper {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    height: 0;
+    overflow: hidden;
+    border-radius: 8px;
+    margin-bottom: var(--spacing-md);
+    border: 2px solid rgba(0, 240, 255, 0.3);
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.video-info h3 {
+    color: var(--cyan);
+    margin-bottom: var(--spacing-sm);
+    font-size: 1.5rem;
+}
+
+.video-info p {
+    color: var(--gray-light);
+    line-height: 1.6;
+}
+
+/* Links Grid */
+.links-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-md);
+}
+
+.link-card {
+    text-decoration: none;
+    display: block;
+    transition: var(--transition-normal);
+}
+
+.link-card:hover {
+    transform: translateY(-5px);
+}
+
+.link-card .holo-panel {
+    height: 100%;
+    padding: var(--spacing-lg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: var(--transition-normal);
+}
+
+.link-card:hover .holo-panel {
+    border-color: var(--cyan);
+}
+
+.link-icon {
+    font-size: 3rem;
+    margin-bottom: var(--spacing-md);
+    filter: drop-shadow(0 0 10px rgba(0, 240, 255, 0.5));
+}
+
+.link-card h3 {
+    color: var(--cyan);
+    margin-bottom: var(--spacing-sm);
+    font-size: 1.375rem;
+}
+
+.link-card p {
+    color: var(--gray-light);
+    margin-bottom: var(--spacing-md);
+    flex-grow: 1;
+}
+
+.link-arrow {
+    color: var(--green);
+    font-weight: 600;
+    font-size: 1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: var(--transition-fast);
+}
+
+.link-card:hover .link-arrow {
+    color: var(--cyan);
+    transform: translateX(5px);
+}
+
+/* ==========================================
    TOOLS PAGE
    ========================================== */
 .tools-intro {
@@ -1771,6 +1897,14 @@ section {
     }
 
     .portfolio-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .videos-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .links-grid {
         grid-template-columns: 1fr;
     }
 
