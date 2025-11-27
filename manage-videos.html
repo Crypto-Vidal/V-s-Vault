@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Videos | Dynasty labz</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .admin-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 120px 2rem 4rem;
+        }
+
+        .admin-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .admin-header h1 {
+            color: var(--cyan);
+            margin-bottom: 1rem;
+        }
+
+        .admin-header p {
+            color: var(--gray-light);
+        }
+
+        .add-video-section {
+            background: rgba(10, 15, 20, 0.6);
+            border: 1px solid rgba(0, 240, 255, 0.3);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .add-video-section h2 {
+            color: var(--cyan);
+            margin-bottom: 1.5rem;
+        }
+
+        .simple-form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .simple-form-group label {
+            display: block;
+            color: var(--cyan);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .simple-form-group input,
+        .simple-form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(0, 240, 255, 0.3);
+            border-radius: 6px;
+            color: var(--white);
+            font-family: var(--font-primary);
+            font-size: 1rem;
+        }
+
+        .simple-form-group input:focus,
+        .simple-form-group textarea:focus {
+            outline: none;
+            border-color: var(--cyan);
+            box-shadow: 0 0 10px rgba(0, 240, 255, 0.3);
+        }
+
+        .simple-form-group textarea {
+            min-height: 80px;
+            resize: vertical;
+        }
+
+        .simple-form-group small {
+            display: block;
+            color: var(--gray-light);
+            margin-top: 0.25rem;
+            font-size: 0.85rem;
+        }
+
+        .add-btn {
+            background: var(--gradient-primary);
+            color: var(--bg-dark);
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .add-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--glow-multi);
+        }
+
+        .videos-list {
+            background: rgba(10, 15, 20, 0.6);
+            border: 1px solid rgba(0, 240, 255, 0.3);
+            border-radius: 12px;
+            padding: 2rem;
+        }
+
+        .videos-list h2 {
+            color: var(--cyan);
+            margin-bottom: 1.5rem;
+        }
+
+        .video-admin-item {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(0, 240, 255, 0.2);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .video-admin-info h3 {
+            color: var(--cyan);
+            margin-bottom: 0.5rem;
+            font-size: 1.25rem;
+        }
+
+        .video-admin-info p {
+            color: var(--gray-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .video-admin-info small {
+            color: var(--green);
+            font-family: monospace;
+        }
+
+        .delete-btn {
+            background: rgba(255, 59, 48, 0.9);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+            white-space: nowrap;
+        }
+
+        .delete-btn:hover {
+            background: rgba(255, 59, 48, 1);
+            transform: scale(1.05);
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 3rem;
+            color: var(--gray-light);
+        }
+
+        .success-message {
+            background: rgba(0, 255, 142, 0.1);
+            border: 1px solid rgba(0, 255, 142, 0.3);
+            color: var(--green);
+            padding: 1rem;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+            display: none;
+        }
+
+        .success-message.show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="holo-background">
+        <div class="grid-overlay"></div>
+        <div class="floating-particles"></div>
+    </div>
+
+    <nav class="nav-container">
+        <div class="nav-content">
+            <div class="logo">
+                <a href="index.html" class="logo-text">Dynasty<span class="logo-accent"> labz</span></a>
+                <div class="logo-glow"></div>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="services.html" class="nav-link">Services</a></li>
+                <li><a href="skills.html" class="nav-link">Skills</a></li>
+                <li><a href="portfolio.html" class="nav-link">Portfolio</a></li>
+                <li><a href="tools.html" class="nav-link">Tools</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+                <li><a href="manage-videos.html" class="nav-link active">Manage Videos</a></li>
+            </ul>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <div class="admin-container">
+        <div class="admin-header">
+            <h1><span class="gradient-text">Manage</span> Your Videos</h1>
+            <p>Add or remove YouTube videos from your portfolio</p>
+        </div>
+
+        <div id="successMessage" class="success-message">
+            Video added successfully! ✓
+        </div>
+
+        <!-- Add Video Form -->
+        <div class="add-video-section">
+            <h2>➕ Add New Video</h2>
+            <form id="addVideoForm">
+                <div class="simple-form-group">
+                    <label for="videoId">YouTube Video ID *</label>
+                    <input
+                        type="text"
+                        id="videoId"
+                        required
+                        placeholder="dQw4w9WgXcQ"
+                    >
+                    <small>Get this from the YouTube URL: youtube.com/watch?v=<strong>VIDEO_ID</strong></small>
+                </div>
+
+                <div class="simple-form-group">
+                    <label for="videoTitle">Video Title *</label>
+                    <input
+                        type="text"
+                        id="videoTitle"
+                        required
+                        placeholder="My Amazing Project Demo"
+                    >
+                </div>
+
+                <div class="simple-form-group">
+                    <label for="videoDesc">Description *</label>
+                    <textarea
+                        id="videoDesc"
+                        required
+                        placeholder="Brief description of what this video showcases..."
+                    ></textarea>
+                </div>
+
+                <button type="submit" class="add-btn">Add Video</button>
+            </form>
+        </div>
+
+        <!-- Videos List -->
+        <div class="videos-list">
+            <h2>📹 Your Videos</h2>
+            <div id="videosList"></div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo-text">AI<span class="logo-accent">NEXUS</span></div>
+                    <p>Empowering businesses through AI innovation</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Navigation</h4>
+                        <ul>
+                            <li><a href="about.html">About</a></li>
+                            <li><a href="services.html">Services</a></li>
+                            <li><a href="portfolio.html">Portfolio</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Resources</h4>
+                        <ul>
+                            <li><a href="skills.html">Skills</a></li>
+                            <li><a href="tools.html">Tools</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 AI Nexus. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Video Management System using localStorage
+        const videosKey = 'portfolioVideos';
+
+        // Get videos from localStorage
+        function getVideos() {
+            const videos = localStorage.getItem(videosKey);
+            return videos ? JSON.parse(videos) : [];
+        }
+
+        // Save videos to localStorage
+        function saveVideos(videos) {
+            localStorage.setItem(videosKey, JSON.stringify(videos));
+        }
+
+        // Display videos
+        function displayVideos() {
+            const videos = getVideos();
+            const videosList = document.getElementById('videosList');
+
+            if (videos.length === 0) {
+                videosList.innerHTML = `
+                    <div class="empty-state">
+                        <p>No videos added yet. Add your first video above!</p>
+                    </div>
+                `;
+                return;
+            }
+
+            videosList.innerHTML = videos.map((video, index) => `
+                <div class="video-admin-item">
+                    <div class="video-admin-info">
+                        <h3>${video.title}</h3>
+                        <p>${video.description}</p>
+                        <small>Video ID: ${video.videoId}</small>
+                    </div>
+                    <button class="delete-btn" onclick="deleteVideo(${index})">🗑️ Delete</button>
+                </div>
+            `).join('');
+        }
+
+        // Add video
+        document.getElementById('addVideoForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const videoId = document.getElementById('videoId').value.trim();
+            const title = document.getElementById('videoTitle').value.trim();
+            const description = document.getElementById('videoDesc').value.trim();
+
+            // Get existing videos
+            const videos = getVideos();
+
+            // Add new video
+            videos.unshift({
+                videoId: videoId,
+                title: title,
+                description: description,
+                addedAt: new Date().toISOString()
+            });
+
+            // Save
+            saveVideos(videos);
+
+            // Show success message
+            const successMsg = document.getElementById('successMessage');
+            successMsg.classList.add('show');
+            setTimeout(() => successMsg.classList.remove('show'), 3000);
+
+            // Reset form
+            this.reset();
+
+            // Refresh display
+            displayVideos();
+        });
+
+        // Delete video
+        function deleteVideo(index) {
+            if (confirm('Are you sure you want to delete this video?')) {
+                const videos = getVideos();
+                videos.splice(index, 1);
+                saveVideos(videos);
+                displayVideos();
+            }
+        }
+
+        // Initial display
+        displayVideos();
+    </script>
+</body>
+</html>
