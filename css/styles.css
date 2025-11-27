@@ -1361,6 +1361,324 @@ section {
 }
 
 /* ==========================================
+   AUTHENTICATION & LOGIN SYSTEM
+   ========================================== */
+
+/* Login Button (Fixed Position) */
+.login-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 1.5rem;
+    background: var(--gradient-primary);
+    color: var(--bg-dark);
+    border: none;
+    border-radius: 50px;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: var(--glow-multi);
+    transition: var(--transition-normal);
+    z-index: 999;
+}
+
+.login-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 30px rgba(0, 240, 255, 0.6), 0 0 40px rgba(0, 255, 142, 0.4);
+}
+
+.login-icon {
+    font-size: 1.5rem;
+}
+
+/* Login Modal */
+.login-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(5, 8, 11, 0.95);
+    backdrop-filter: blur(10px);
+}
+
+.login-modal-content {
+    position: relative;
+    background: rgba(10, 15, 20, 0.95);
+    border: 2px solid rgba(0, 240, 255, 0.5);
+    border-radius: 12px;
+    margin: 10% auto;
+    padding: var(--spacing-lg);
+    max-width: 450px;
+    box-shadow: var(--glow-multi);
+    animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.login-close {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    color: var(--gray-light);
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.login-close:hover {
+    color: var(--cyan);
+}
+
+.login-modal-content h2 {
+    color: var(--cyan);
+    text-align: center;
+    margin-bottom: var(--spacing-sm);
+}
+
+.login-modal-content p {
+    text-align: center;
+    color: var(--gray-light);
+    margin-bottom: var(--spacing-lg);
+}
+
+/* Google Sign In Button */
+.google-signin-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    width: 100%;
+    padding: 1rem 1.5rem;
+    background: white;
+    color: #444;
+    border: none;
+    border-radius: 8px;
+    font-family: var(--font-primary);
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: var(--transition-normal);
+}
+
+.google-signin-btn:hover {
+    background: #f8f8f8;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.google-signin-btn img {
+    width: 24px;
+    height: 24px;
+}
+
+/* Login Error */
+.login-error {
+    margin-top: var(--spacing-md);
+    padding: 0.75rem;
+    background: rgba(255, 0, 0, 0.1);
+    border: 1px solid rgba(255, 0, 0, 0.3);
+    border-radius: 6px;
+    color: #ff6b6b;
+    text-align: center;
+    font-size: 0.9rem;
+    display: none;
+}
+
+.login-error:not(:empty) {
+    display: block;
+}
+
+/* Edit Controls */
+.edit-controls {
+    position: fixed;
+    top: 80px;
+    right: 30px;
+    z-index: 998;
+}
+
+.edit-panel {
+    background: rgba(10, 15, 20, 0.95);
+    border: 2px solid rgba(0, 240, 255, 0.5);
+    border-radius: 12px;
+    padding: var(--spacing-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    box-shadow: var(--glow-multi);
+    backdrop-filter: blur(10px);
+}
+
+.edit-user-info {
+    color: var(--cyan);
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-align: center;
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 1px solid rgba(0, 240, 255, 0.2);
+}
+
+.edit-btn {
+    padding: 0.75rem 1.5rem;
+    background: var(--gradient-primary);
+    color: var(--bg-dark);
+    border: none;
+    border-radius: 8px;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: var(--transition-normal);
+    white-space: nowrap;
+}
+
+.edit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--glow-multi);
+}
+
+.logout-btn {
+    background: rgba(255, 59, 48, 0.8);
+    color: white;
+}
+
+.logout-btn:hover {
+    background: rgba(255, 59, 48, 1);
+}
+
+/* Video Modal */
+.video-modal {
+    display: none;
+    position: fixed;
+    z-index: 1001;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(5, 8, 11, 0.95);
+    backdrop-filter: blur(10px);
+    overflow-y: auto;
+}
+
+.video-modal-content {
+    position: relative;
+    background: rgba(10, 15, 20, 0.95);
+    border: 2px solid rgba(0, 240, 255, 0.5);
+    border-radius: 12px;
+    margin: 5% auto;
+    padding: var(--spacing-lg);
+    max-width: 600px;
+    box-shadow: var(--glow-multi);
+    animation: slideDown 0.3s ease;
+}
+
+.video-close {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    color: var(--gray-light);
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.video-close:hover {
+    color: var(--cyan);
+}
+
+.video-modal-content h2 {
+    color: var(--cyan);
+    margin-bottom: var(--spacing-md);
+}
+
+/* Form Styles */
+.form-group {
+    margin-bottom: var(--spacing-md);
+}
+
+.form-group label {
+    display: block;
+    color: var(--cyan);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(0, 240, 255, 0.3);
+    border-radius: 6px;
+    color: var(--white);
+    font-family: var(--font-primary);
+    font-size: 1rem;
+    transition: var(--transition-fast);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--cyan);
+    box-shadow: 0 0 10px rgba(0, 240, 255, 0.3);
+}
+
+.form-group textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.form-group small {
+    display: block;
+    color: var(--gray-light);
+    font-size: 0.85rem;
+    margin-top: 0.25rem;
+}
+
+.form-group small strong {
+    color: var(--green);
+}
+
+/* Delete Video Button */
+.delete-video-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 0.5rem 1rem;
+    background: rgba(255, 59, 48, 0.9);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: var(--transition-fast);
+    z-index: 10;
+}
+
+.delete-video-btn:hover {
+    background: rgba(255, 59, 48, 1);
+    transform: scale(1.05);
+}
+
+/* ==========================================
    TOOLS PAGE
    ========================================== */
 .tools-intro {
@@ -1883,6 +2201,49 @@ section {
 
     .cta-buttons {
         flex-direction: column;
+    }
+
+    /* Authentication Mobile Styles */
+    .login-btn {
+        bottom: 20px;
+        right: 20px;
+        padding: 0.875rem 1.25rem;
+        font-size: 0.9rem;
+    }
+
+    .login-icon {
+        font-size: 1.25rem;
+    }
+
+    .login-text {
+        display: none;
+    }
+
+    .edit-controls {
+        top: 70px;
+        right: 10px;
+        left: 10px;
+        width: auto;
+    }
+
+    .edit-panel {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+
+    .edit-user-info {
+        width: 100%;
+        border-bottom: 1px solid rgba(0, 240, 255, 0.2);
+        padding-bottom: 0.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .login-modal-content,
+    .video-modal-content {
+        margin: 5% 20px;
+        max-width: 100%;
     }
 }
 

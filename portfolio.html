@@ -513,6 +513,84 @@
         </div>
     </footer>
 
+    <!-- Login Button (Fixed Position) -->
+    <button id="loginBtn" class="login-btn">
+        <span class="login-icon">👤</span>
+        <span class="login-text">Admin Login</span>
+    </button>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="login-modal">
+        <div class="login-modal-content">
+            <span class="login-close">&times;</span>
+            <h2>Admin Login</h2>
+            <p>Sign in to manage your portfolio content</p>
+            <button id="googleSignInBtn" class="google-signin-btn">
+                <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google">
+                Sign in with Google
+            </button>
+            <div id="loginError" class="login-error"></div>
+        </div>
+    </div>
+
+    <!-- Edit Mode Controls (Hidden by default) -->
+    <div id="editControls" class="edit-controls" style="display: none;">
+        <div class="edit-panel">
+            <span class="edit-user-info"></span>
+            <button id="addVideoBtn" class="edit-btn">+ Add Video</button>
+            <button id="logoutBtn" class="edit-btn logout-btn">Logout</button>
+        </div>
+    </div>
+
+    <!-- Add Video Modal -->
+    <div id="addVideoModal" class="video-modal">
+        <div class="video-modal-content">
+            <span class="video-close">&times;</span>
+            <h2>Add YouTube Video</h2>
+            <form id="addVideoForm">
+                <div class="form-group">
+                    <label for="videoId">YouTube Video ID</label>
+                    <input type="text" id="videoId" required placeholder="e.g., dQw4w9WgXcQ">
+                    <small>Get this from the YouTube URL: youtube.com/watch?v=<strong>VIDEO_ID</strong></small>
+                </div>
+                <div class="form-group">
+                    <label for="videoTitle">Video Title</label>
+                    <input type="text" id="videoTitle" required placeholder="My Project Demo">
+                </div>
+                <div class="form-group">
+                    <label for="videoDesc">Description</label>
+                    <textarea id="videoDesc" required placeholder="Brief description of the video"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Add Video</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+
+    <!-- Firebase Configuration -->
+    <script>
+        // TODO: Replace with your Firebase config from Firebase Console
+        // Get this from: Firebase Console > Project Settings > Your Apps > SDK setup and configuration
+        const firebaseConfig = {
+            apiKey: "YOUR_API_KEY",
+            authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+            projectId: "YOUR_PROJECT_ID",
+            storageBucket: "YOUR_PROJECT_ID.appspot.com",
+            messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+            appId: "YOUR_APP_ID"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+    </script>
+
     <script src="js/main.js"></script>
+    <script src="js/auth.js"></script>
 </body>
 </html>
