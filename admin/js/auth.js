@@ -5,7 +5,7 @@
 const AUTH_CONFIG = {
     // Default credentials (change these!)
     defaultUsername: 'admin',
-    defaultPassword: 'dynastylabz2024',
+    defaultPassword: '1234',
     sessionKey: 'cms_session',
     sessionDuration: 24 * 60 * 60 * 1000 // 24 hours
 };
