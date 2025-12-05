@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media Library - Dynasty labz CMS</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="css/admin.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="admin-body">
+    <!-- Background Animation -->
+    <div class="holo-background">
+        <div class="grid-overlay"></div>
+        <div class="floating-particles"></div>
+    </div>
+
+    <!-- Admin Navigation -->
+    <nav class="admin-nav">
+        <div class="admin-nav-content">
+            <div class="logo">
+                <span class="logo-text">Dynasty<span class="logo-accent"> labz</span></span>
+                <span class="cms-badge">CMS</span>
+            </div>
+            <div class="admin-nav-links">
+                <a href="dashboard.html" class="admin-nav-link">
+                    <span>📊</span> Dashboard
+                </a>
+                <a href="editor.html" class="admin-nav-link">
+                    <span>✏️</span> Content Editor
+                </a>
+                <a href="media.html" class="admin-nav-link active">
+                    <span>🖼️</span> Media Library
+                </a>
+                <a href="../index.html" class="admin-nav-link" target="_blank">
+                    <span>🌐</span> View Site
+                </a>
+                <button id="logoutBtn" class="admin-nav-link logout-btn">
+                    <span>🚪</span> Logout
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="admin-container">
+        <div class="admin-header">
+            <div>
+                <h1>Media Library</h1>
+                <p>Manage your images, videos, and documents</p>
+            </div>
+            <div class="header-actions">
+                <button id="uploadBtn" class="btn btn-primary">
+                    <span>📤 Upload Media</span>
+                    <div class="btn-glow"></div>
+                </button>
+            </div>
+        </div>
+
+        <!-- Media Filters -->
+        <div class="media-filters">
+            <button class="filter-btn active" data-filter="all">All Media</button>
+            <button class="filter-btn" data-filter="images">Images</button>
+            <button class="filter-btn" data-filter="videos">Videos</button>
+            <button class="filter-btn" data-filter="documents">Documents</button>
+        </div>
+
+        <!-- Upload Area -->
+        <div id="uploadArea" class="upload-area" style="display: none;">
+            <div class="holo-panel upload-panel">
+                <div class="panel-glow"></div>
+                <div class="upload-dropzone" id="uploadDropzone">
+                    <div class="upload-icon">📁</div>
+                    <h3>Drag & drop files here</h3>
+                    <p>or click to browse</p>
+                    <input type="file" id="fileInput" multiple accept="image/*,video/*,.pdf,.doc,.docx" style="display: none;">
+                    <button id="browseBtn" class="btn btn-secondary">
+                        <span>Browse Files</span>
+                    </button>
+                </div>
+
+                <div id="uploadProgress" class="upload-progress" style="display: none;">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <div class="progress-text" id="progressText">Uploading...</div>
+                </div>
+
+                <div class="upload-actions">
+                    <button id="cancelUpload" class="btn btn-secondary">Cancel</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Media Grid -->
+        <div class="media-grid" id="mediaGrid">
+            <!-- Empty State -->
+            <div class="empty-state" id="emptyState">
+                <div class="holo-panel empty-panel">
+                    <div class="panel-glow"></div>
+                    <div class="empty-icon">🖼️</div>
+                    <h3>No media files yet</h3>
+                    <p>Upload your first image, video, or document to get started</p>
+                    <button class="btn btn-primary" onclick="document.getElementById('uploadBtn').click()">
+                        <span>Upload Media</span>
+                        <div class="btn-glow"></div>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Media items will be populated here by JavaScript -->
+        </div>
+    </div>
+
+    <!-- Media Preview Modal -->
+    <div id="mediaModal" class="modal" style="display: none;">
+        <div class="modal-overlay" id="modalOverlay"></div>
+        <div class="modal-content">
+            <div class="holo-panel modal-panel">
+                <div class="panel-glow"></div>
+                <button class="modal-close" id="modalClose">×</button>
+
+                <div class="modal-body">
+                    <div class="media-preview" id="mediaPreview">
+                        <!-- Preview content -->
+                    </div>
+
+                    <div class="media-info">
+                        <h3 id="mediaName">File Name</h3>
+                        <div class="media-details">
+                            <div class="detail-item">
+                                <span class="detail-label">URL:</span>
+                                <input type="text" id="mediaUrl" class="form-input" readonly>
+                                <button class="btn-copy" id="copyUrl" title="Copy URL">📋</button>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Type:</span>
+                                <span id="mediaType">-</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Size:</span>
+                                <span id="mediaSize">-</span>
+                            </div>
+                        </div>
+
+                        <div class="media-actions">
+                            <button id="deleteMedia" class="btn btn-danger">
+                                <span>🗑️ Delete</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/main.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/media.js"></script>
+</body>
+</html>

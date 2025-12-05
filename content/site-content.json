@@ -1,0 +1,113 @@
+{
+  "home": {
+    "hero": {
+      "title": {
+        "line1": "Transforming Businesses",
+        "line2": "With AI Intelligence"
+      },
+      "subtitle": "AI Consultant & App Builder | Empowering Local Businesses Through Automation",
+      "stats": [
+        {
+          "number": "100+",
+          "label": "AI Solutions Deployed"
+        },
+        {
+          "number": "50+",
+          "label": "Happy Clients"
+        },
+        {
+          "number": "24/7",
+          "label": "Automation Support"
+        }
+      ],
+      "primaryCTA": {
+        "text": "Start Your AI Journey",
+        "link": "contact.html"
+      },
+      "secondaryCTA": {
+        "text": "View Portfolio",
+        "link": "portfolio.html"
+      }
+    },
+    "services": {
+      "sectionTitle": "Core Capabilities",
+      "cards": [
+        {
+          "id": "ai-integration",
+          "icon": "🤖",
+          "title": "AI Integration",
+          "description": "Seamlessly integrate cutting-edge AI solutions into your existing business workflows and systems.",
+          "link": "services.html"
+        },
+        {
+          "id": "automation",
+          "icon": "⚡",
+          "title": "Automation",
+          "description": "Streamline operations with intelligent automation that saves time and reduces costs.",
+          "link": "services.html"
+        },
+        {
+          "id": "custom-apps",
+          "icon": "💻",
+          "title": "Custom Apps",
+          "description": "Build tailored applications designed specifically for your unique business needs.",
+          "link": "tools.html"
+        },
+        {
+          "id": "consulting",
+          "icon": "📊",
+          "title": "Consulting",
+          "description": "Strategic guidance to help you navigate the AI landscape and make informed decisions.",
+          "link": "contact.html"
+        }
+      ]
+    },
+    "cta": {
+      "title": "Ready to Transform Your Business?",
+      "description": "Let's discuss how AI and automation can revolutionize your operations.",
+      "buttonText": "Get Free Consultation",
+      "link": "contact.html"
+    }
+  },
+  "header": {
+    "logo": {
+      "text": "Dynasty",
+      "accent": " labz"
+    },
+    "navigation": [
+      { "text": "Home", "link": "index.html" },
+      { "text": "About", "link": "about.html" },
+      { "text": "Services", "link": "services.html" },
+      { "text": "Skills", "link": "skills.html" },
+      { "text": "Portfolio", "link": "portfolio.html" },
+      { "text": "Tools", "link": "tools.html" },
+      { "text": "Contact", "link": "contact.html" }
+    ]
+  },
+  "footer": {
+    "brand": {
+      "text": "AI",
+      "accent": "NEXUS"
+    },
+    "tagline": "Empowering businesses through AI innovation",
+    "columns": [
+      {
+        "title": "Navigation",
+        "links": [
+          { "text": "About", "link": "about.html" },
+          { "text": "Services", "link": "services.html" },
+          { "text": "Portfolio", "link": "portfolio.html" }
+        ]
+      },
+      {
+        "title": "Resources",
+        "links": [
+          { "text": "Skills", "link": "skills.html" },
+          { "text": "Tools", "link": "tools.html" },
+          { "text": "Contact", "link": "contact.html" }
+        ]
+      }
+    ],
+    "copyright": "&copy; 2024 AI Nexus. All rights reserved."
+  }
+}

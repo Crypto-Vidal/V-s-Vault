@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Content Editor - Dynasty labz CMS</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="css/admin.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="admin-body">
+    <!-- Background Animation -->
+    <div class="holo-background">
+        <div class="grid-overlay"></div>
+        <div class="floating-particles"></div>
+    </div>
+
+    <!-- Admin Navigation -->
+    <nav class="admin-nav">
+        <div class="admin-nav-content">
+            <div class="logo">
+                <span class="logo-text">Dynasty<span class="logo-accent"> labz</span></span>
+                <span class="cms-badge">CMS</span>
+            </div>
+            <div class="admin-nav-links">
+                <a href="dashboard.html" class="admin-nav-link">
+                    <span>📊</span> Dashboard
+                </a>
+                <a href="editor.html" class="admin-nav-link active">
+                    <span>✏️</span> Content Editor
+                </a>
+                <a href="media.html" class="admin-nav-link">
+                    <span>🖼️</span> Media Library
+                </a>
+                <a href="../index.html" class="admin-nav-link" target="_blank">
+                    <span>🌐</span> View Site
+                </a>
+                <button id="logoutBtn" class="admin-nav-link logout-btn">
+                    <span>🚪</span> Logout
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="admin-container">
+        <div class="admin-header">
+            <div>
+                <h1>Content Editor</h1>
+                <p>Edit your website content in real-time</p>
+            </div>
+            <div class="header-actions">
+                <button id="previewBtn" class="btn btn-secondary">
+                    <span>👁️ Preview Changes</span>
+                </button>
+                <button id="saveBtn" class="btn btn-primary">
+                    <span>💾 Save Changes</span>
+                    <div class="btn-glow"></div>
+                </button>
+            </div>
+        </div>
+
+        <!-- Section Selector -->
+        <div class="editor-tabs">
+            <button class="editor-tab active" data-section="home">
+                🏠 Home Page
+            </button>
+            <button class="editor-tab" data-section="global">
+                🌐 Header & Footer
+            </button>
+        </div>
+
+        <!-- Editor Forms -->
+        <div id="editorContent" class="editor-content">
+            <!-- Home Section -->
+            <div id="homeSection" class="editor-section active">
+                <h2>Home Page Content</h2>
+
+                <!-- Hero Section -->
+                <div class="holo-panel editor-panel">
+                    <div class="panel-glow"></div>
+                    <h3>Hero Section</h3>
+
+                    <div class="form-group">
+                        <label for="heroTitle1">Hero Title Line 1</label>
+                        <input type="text" id="heroTitle1" class="form-input" placeholder="Transforming Businesses">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="heroTitle2">Hero Title Line 2</label>
+                        <input type="text" id="heroTitle2" class="form-input" placeholder="With AI Intelligence">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="heroSubtitle">Hero Subtitle</label>
+                        <textarea id="heroSubtitle" class="form-textarea" rows="2" placeholder="AI Consultant & App Builder | Empowering Local Businesses Through Automation"></textarea>
+                    </div>
+
+                    <h4>Hero Stats</h4>
+                    <div id="heroStats" class="stats-editor">
+                        <!-- Will be populated by JavaScript -->
+                    </div>
+
+                    <h4>Call to Action Buttons</h4>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="primaryCTA">Primary Button Text</label>
+                            <input type="text" id="primaryCTA" class="form-input" placeholder="Start Your AI Journey">
+                        </div>
+                        <div class="form-group">
+                            <label for="primaryCTALink">Primary Button Link</label>
+                            <input type="text" id="primaryCTALink" class="form-input" placeholder="contact.html">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="secondaryCTA">Secondary Button Text</label>
+                            <input type="text" id="secondaryCTA" class="form-input" placeholder="View Portfolio">
+                        </div>
+                        <div class="form-group">
+                            <label for="secondaryCTALink">Secondary Button Link</label>
+                            <input type="text" id="secondaryCTALink" class="form-input" placeholder="portfolio.html">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Services Section -->
+                <div class="holo-panel editor-panel">
+                    <div class="panel-glow"></div>
+                    <h3>Services Section</h3>
+
+                    <div class="form-group">
+                        <label for="servicesTitle">Section Title</label>
+                        <input type="text" id="servicesTitle" class="form-input" placeholder="Core Capabilities">
+                    </div>
+
+                    <h4>Service Cards</h4>
+                    <div id="serviceCards" class="cards-editor">
+                        <!-- Will be populated by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- CTA Section -->
+                <div class="holo-panel editor-panel">
+                    <div class="panel-glow"></div>
+                    <h3>Call-to-Action Section</h3>
+
+                    <div class="form-group">
+                        <label for="ctaTitle">CTA Title</label>
+                        <input type="text" id="ctaTitle" class="form-input" placeholder="Ready to Transform Your Business?">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="ctaDescription">CTA Description</label>
+                        <textarea id="ctaDescription" class="form-textarea" rows="2" placeholder="Let's discuss how AI and automation can revolutionize your operations."></textarea>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="ctaButton">Button Text</label>
+                            <input type="text" id="ctaButton" class="form-input" placeholder="Get Free Consultation">
+                        </div>
+                        <div class="form-group">
+                            <label for="ctaLink">Button Link</label>
+                            <input type="text" id="ctaLink" class="form-input" placeholder="contact.html">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Global Section -->
+            <div id="globalSection" class="editor-section">
+                <h2>Header & Footer Content</h2>
+
+                <!-- Header Section -->
+                <div class="holo-panel editor-panel">
+                    <div class="panel-glow"></div>
+                    <h3>Header / Logo</h3>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="logoText">Logo Text</label>
+                            <input type="text" id="logoText" class="form-input" placeholder="Dynasty">
+                        </div>
+                        <div class="form-group">
+                            <label for="logoAccent">Logo Accent</label>
+                            <input type="text" id="logoAccent" class="form-input" placeholder=" labz">
+                        </div>
+                    </div>
+
+                    <h4>Navigation Links</h4>
+                    <div id="navLinks" class="links-editor">
+                        <!-- Will be populated by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Footer Section -->
+                <div class="holo-panel editor-panel">
+                    <div class="panel-glow"></div>
+                    <h3>Footer</h3>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="footerBrand">Footer Brand Text</label>
+                            <input type="text" id="footerBrand" class="form-input" placeholder="AI">
+                        </div>
+                        <div class="form-group">
+                            <label for="footerAccent">Footer Accent</label>
+                            <input type="text" id="footerAccent" class="form-input" placeholder="NEXUS">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="footerTagline">Footer Tagline</label>
+                        <input type="text" id="footerTagline" class="form-input" placeholder="Empowering businesses through AI innovation">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="footerCopyright">Copyright Text</label>
+                        <input type="text" id="footerCopyright" class="form-input" placeholder="&copy; 2024 AI Nexus. All rights reserved.">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Save Notification -->
+        <div id="saveNotification" class="save-notification" style="display: none;">
+            <div class="notification-content">
+                <span class="notification-icon">✅</span>
+                <span class="notification-text">Changes saved successfully!</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/main.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/editor.js"></script>
+</body>
+</html>
