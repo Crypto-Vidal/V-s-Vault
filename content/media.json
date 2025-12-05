@@ -1,0 +1,17 @@
+{
+  "images": {
+    "logo": {
+      "url": "",
+      "alt": "Dynasty labz Logo",
+      "description": "Main site logo"
+    },
+    "hero-background": {
+      "url": "",
+      "alt": "Hero section background",
+      "description": "Background image for hero section"
+    },
+    "portfolio": []
+  },
+  "videos": [],
+  "documents": []
+}
