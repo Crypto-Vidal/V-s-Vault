@@ -132,20 +132,17 @@ if (document.getElementById('loginForm')) {
     });
 }
 
-// Logout button handler (for all admin pages)
+// Logout button handler - redirects to login page
 if (document.getElementById('logoutBtn')) {
     document.getElementById('logoutBtn').addEventListener('click', () => {
-        if (confirm('Are you sure you want to logout?')) {
-            authManager.logout();
+        if (confirm('Are you sure you want to exit?')) {
+            window.location.href = 'login.html';
         }
     });
 }
 
-// Protect admin pages (call this on all admin pages except login)
-if (window.location.pathname.includes('/admin/') &&
-    !window.location.pathname.includes('login.html')) {
-    authManager.requireAuth();
-}
+// Authentication disabled - direct access allowed
+// No login required for admin pages
 
 // Add shake animation for login errors
 const style = document.createElement('style');
