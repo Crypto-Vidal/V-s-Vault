@@ -6,6 +6,7 @@
     <title>Admin Dashboard | Dynasty labz</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/video-player.css">
+    <link rel="stylesheet" href="admin/css/admin.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -17,25 +18,157 @@
         <div class="floating-particles"></div>
     </div>
 
-    <!-- Navigation -->
-    <nav class="nav-container">
-        <div class="nav-content">
-            <div class="logo">
+    <!-- Enhanced Admin Navigation -->
+    <nav class="admin-nav-bar">
+        <div class="admin-nav-content">
+            <div class="logo-minimal">
                 <span class="logo-text">Dynasty<span class="logo-accent"> labz</span></span>
-                <div class="logo-glow"></div>
             </div>
-            <ul class="nav-menu">
-                <li><a href="index.html" class="nav-link">Home</a></li>
-                <li><a href="videos.html" class="nav-link">Videos</a></li>
-                <li><a href="admin.html" class="nav-link active">Admin</a></li>
-            </ul>
-            <button class="mobile-menu-toggle" aria-label="Toggle menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
+
+            <!-- Search Bar -->
+            <div class="admin-search-container">
+                <button class="admin-search-trigger" id="searchTrigger">
+                    <span class="search-icon">🔍</span>
+                    <span class="search-text">Search videos, settings...</span>
+                    <span class="search-shortcut">Ctrl+K</span>
+                </button>
+            </div>
+
+            <!-- Admin Actions -->
+            <div class="admin-nav-actions">
+                <a href="index.html" class="nav-btn" title="View Site">
+                    <span>🏠</span>
+                </a>
+                <a href="videos.html" class="nav-btn" title="Videos">
+                    <span>📹</span>
+                </a>
+                <button class="nav-btn ai-btn" id="aiAssistantBtn" title="AI Assistant">
+                    <span>✨</span>
+                    <span class="ai-pulse"></span>
+                </button>
+            </div>
         </div>
     </nav>
+
+    <!-- Search Modal -->
+    <div id="searchModal" class="search-modal">
+        <div class="search-modal-overlay"></div>
+        <div class="search-modal-content">
+            <div class="search-input-wrapper">
+                <span class="search-input-icon">🔍</span>
+                <input type="text" id="searchInput" class="search-input" placeholder="Search videos, categories, settings..." autocomplete="off">
+                <button class="search-close" id="closeSearch">×</button>
+            </div>
+            <div class="search-results" id="searchResults">
+                <div class="search-suggestions">
+                    <div class="suggestion-group">
+                        <div class="suggestion-label">Quick Actions</div>
+                        <button class="suggestion-item" data-action="add-video">➕ Add New Video</button>
+                        <button class="suggestion-item" data-action="export">💾 Export Videos</button>
+                        <button class="suggestion-item" data-action="import">📥 Import Videos</button>
+                    </div>
+                    <div class="suggestion-group">
+                        <div class="suggestion-label">Categories</div>
+                        <button class="suggestion-item" data-filter="tutorial">Tutorial Videos</button>
+                        <button class="suggestion-item" data-filter="demo">Demo Videos</button>
+                        <button class="suggestion-item" data-filter="presentation">Presentations</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- AI Assistant Panel -->
+    <div id="aiAssistant" class="ai-assistant">
+        <div class="ai-assistant-overlay"></div>
+        <div class="ai-assistant-panel">
+            <div class="ai-header">
+                <div class="ai-header-title">
+                    <span class="ai-icon">✨</span>
+                    <h3>AI Assistant</h3>
+                    <span class="ai-badge">Claude Code</span>
+                </div>
+                <button class="ai-close" id="closeAI">×</button>
+            </div>
+
+            <div class="ai-content">
+                <div class="ai-welcome">
+                    <div class="ai-avatar">🤖</div>
+                    <h4>How can I help you today?</h4>
+                    <p>Describe changes you'd like to make to your website, or choose a quick action below.</p>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="ai-quick-actions">
+                    <div class="quick-action-label">Quick Actions</div>
+                    <div class="quick-actions-grid">
+                        <button class="quick-action-btn" data-prompt="redesign-hero">
+                            <span class="qa-icon">🎨</span>
+                            <span class="qa-text">Redesign Hero Section</span>
+                        </button>
+                        <button class="quick-action-btn" data-prompt="add-feature">
+                            <span class="qa-icon">⚡</span>
+                            <span class="qa-text">Add New Feature</span>
+                        </button>
+                        <button class="quick-action-btn" data-prompt="fix-bug">
+                            <span class="qa-icon">🐛</span>
+                            <span class="qa-text">Fix a Bug</span>
+                        </button>
+                        <button class="quick-action-btn" data-prompt="optimize">
+                            <span class="qa-icon">🚀</span>
+                            <span class="qa-text">Optimize Performance</span>
+                        </button>
+                        <button class="quick-action-btn" data-prompt="styling">
+                            <span class="qa-icon">💅</span>
+                            <span class="qa-text">Update Styling</span>
+                        </button>
+                        <button class="quick-action-btn" data-prompt="content">
+                            <span class="qa-icon">📝</span>
+                            <span class="qa-text">Edit Content</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- AI Chat Interface -->
+                <div class="ai-chat">
+                    <div class="ai-messages" id="aiMessages">
+                        <!-- Messages will appear here -->
+                    </div>
+                    <div class="ai-input-wrapper">
+                        <textarea
+                            id="aiInput"
+                            class="ai-input"
+                            placeholder="Describe what you'd like to change... (e.g., 'Make the hero section bigger and add a particle effect')"
+                            rows="3"
+                        ></textarea>
+                        <div class="ai-input-actions">
+                            <button class="ai-send-btn" id="aiSendBtn">
+                                <span>Send to Claude Code</span>
+                                <span class="send-icon">→</span>
+                            </button>
+                            <button class="ai-copy-btn" id="aiCopyBtn" title="Copy request">
+                                📋
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AI Templates -->
+                <div class="ai-templates">
+                    <details class="ai-templates-section">
+                        <summary>📚 Example Prompts</summary>
+                        <div class="template-list">
+                            <button class="template-item" data-template="color">Change the color scheme to use blue and purple gradients</button>
+                            <button class="template-item" data-template="video-grid">Make the video grid show 4 columns on desktop instead of 3</button>
+                            <button class="template-item" data-template="animation">Add smooth fade-in animations when videos load</button>
+                            <button class="template-item" data-template="mobile">Improve the mobile responsiveness of the navigation</button>
+                            <button class="template-item" data-template="footer">Add social media links to the footer</button>
+                        </div>
+                    </details>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Admin Header -->
     <section class="hero-section hero-small">
