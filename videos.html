@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Videos | Dynasty labz</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/video-player.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Background Animation -->
+    <div class="holo-background">
+        <div class="grid-overlay"></div>
+        <div class="floating-particles"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="nav-container">
+        <div class="nav-content">
+            <div class="logo">
+                <span class="logo-text">Dynasty<span class="logo-accent"> labz</span></span>
+                <div class="logo-glow"></div>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="services.html" class="nav-link">Services</a></li>
+                <li><a href="skills.html" class="nav-link">Skills</a></li>
+                <li><a href="portfolio.html" class="nav-link">Portfolio</a></li>
+                <li><a href="tools.html" class="nav-link">Tools</a></li>
+                <li><a href="videos.html" class="nav-link active">Videos</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section hero-small">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    <span class="title-line">Video <span class="gradient-text">Gallery</span></span>
+                </h1>
+                <p class="hero-subtitle">
+                    Explore our collection of tutorials, demos, and insights
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Categories Filter -->
+    <section class="video-filter-section">
+        <div class="container">
+            <div class="filter-controls">
+                <button class="filter-btn active" data-category="all">All Videos</button>
+                <button class="filter-btn" data-category="tutorial">Tutorials</button>
+                <button class="filter-btn" data-category="demo">Demos</button>
+                <button class="filter-btn" data-category="presentation">Presentations</button>
+                <button class="filter-btn" data-category="other">Other</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Gallery -->
+    <section class="video-gallery-section">
+        <div class="container">
+            <div id="videoGallery" class="video-grid">
+                <!-- Videos will be dynamically loaded here -->
+                <div class="empty-state">
+                    <div class="empty-icon">🎬</div>
+                    <h3>No Videos Yet</h3>
+                    <p>Videos will appear here once they are added through the admin dashboard.</p>
+                    <a href="admin.html" class="btn btn-primary">
+                        <span>Go to Admin Dashboard</span>
+                        <div class="btn-glow"></div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Modal -->
+    <div id="videoModal" class="video-modal">
+        <div class="video-modal-overlay"></div>
+        <div class="video-modal-content">
+            <button class="video-modal-close" aria-label="Close video">&times;</button>
+            <div class="video-modal-header">
+                <h2 id="modalVideoTitle">Video Title</h2>
+                <p id="modalVideoDescription">Video description</p>
+            </div>
+            <div class="video-modal-player">
+                <div id="modalVideoPlayer"></div>
+            </div>
+            <div class="video-modal-footer">
+                <span id="modalVideoCategory" class="video-category-badge">Category</span>
+                <span id="modalVideoDate" class="video-date">Date</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo-text">Dynasty<span class="logo-accent"> labz</span></div>
+                    <p>Empowering businesses through AI innovation</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Navigation</h4>
+                        <ul>
+                            <li><a href="about.html">About</a></li>
+                            <li><a href="services.html">Services</a></li>
+                            <li><a href="portfolio.html">Portfolio</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Resources</h4>
+                        <ul>
+                            <li><a href="skills.html">Skills</a></li>
+                            <li><a href="tools.html">Tools</a></li>
+                            <li><a href="videos.html">Videos</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Dynasty labz. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/video-player.js"></script>
+</body>
+</html>

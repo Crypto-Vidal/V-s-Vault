@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | Dynasty labz</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/video-player.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Background Animation -->
+    <div class="holo-background">
+        <div class="grid-overlay"></div>
+        <div class="floating-particles"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="nav-container">
+        <div class="nav-content">
+            <div class="logo">
+                <span class="logo-text">Dynasty<span class="logo-accent"> labz</span></span>
+                <div class="logo-glow"></div>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="videos.html" class="nav-link">Videos</a></li>
+                <li><a href="admin.html" class="nav-link active">Admin</a></li>
+            </ul>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Admin Header -->
+    <section class="hero-section hero-small">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    <span class="title-line">Video <span class="gradient-text">Management</span></span>
+                </h1>
+                <p class="hero-subtitle">
+                    Upload, organize, and manage your video content
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Admin Dashboard -->
+    <section class="admin-section">
+        <div class="container">
+            <!-- Add Video Form -->
+            <div class="holo-panel admin-panel">
+                <div class="panel-glow"></div>
+                <h2 class="admin-section-title">Add New Video</h2>
+
+                <form id="addVideoForm" class="video-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="videoTitle">Video Title *</label>
+                            <input type="text" id="videoTitle" name="title" required placeholder="Enter video title">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="videoCategory">Category *</label>
+                            <select id="videoCategory" name="category" required>
+                                <option value="">Select category</option>
+                                <option value="tutorial">Tutorial</option>
+                                <option value="demo">Demo</option>
+                                <option value="presentation">Presentation</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="videoDescription">Description</label>
+                        <textarea id="videoDescription" name="description" rows="3" placeholder="Enter video description"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="videoSource">Video Source *</label>
+                        <select id="videoSource" name="source" required>
+                            <option value="youtube">YouTube</option>
+                            <option value="vimeo">Vimeo</option>
+                            <option value="direct">Direct URL (MP4, WebM)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="videoUrl">Video URL *</label>
+                        <input type="url" id="videoUrl" name="url" required placeholder="Enter video URL or embed code">
+                        <small class="form-help">
+                            • YouTube: Full URL (https://www.youtube.com/watch?v=...) or Video ID<br>
+                            • Vimeo: Full URL (https://vimeo.com/...)<br>
+                            • Direct: Direct link to video file (.mp4, .webm)
+                        </small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="videoThumbnail">Thumbnail URL (Optional)</label>
+                        <input type="url" id="videoThumbnail" name="thumbnail" placeholder="Enter thumbnail image URL">
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">
+                            <span>Add Video</span>
+                            <div class="btn-glow"></div>
+                        </button>
+                        <button type="reset" class="btn btn-secondary">
+                            <span>Clear Form</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Video Management List -->
+            <div class="holo-panel admin-panel">
+                <div class="panel-glow"></div>
+                <div class="admin-header">
+                    <h2 class="admin-section-title">Manage Videos</h2>
+                    <div class="admin-actions">
+                        <button id="exportVideos" class="btn btn-secondary btn-sm">
+                            <span>Export Data</span>
+                        </button>
+                        <button id="importVideos" class="btn btn-secondary btn-sm">
+                            <span>Import Data</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div id="videoList" class="video-management-list">
+                    <!-- Videos will be dynamically loaded here -->
+                    <div class="empty-state">
+                        <div class="empty-icon">📹</div>
+                        <p>No videos added yet. Add your first video using the form above.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Import Modal -->
+    <div id="importModal" class="video-modal" style="display: none;">
+        <div class="video-modal-overlay"></div>
+        <div class="video-modal-content" style="max-width: 600px;">
+            <button class="video-modal-close" aria-label="Close">&times;</button>
+            <div class="video-modal-header">
+                <h2>Import Video Data</h2>
+                <p>Paste your exported JSON data below</p>
+            </div>
+            <div class="video-modal-body">
+                <textarea id="importData" rows="10" placeholder='Paste JSON data here...' style="width: 100%; padding: 1rem; background: rgba(0, 240, 255, 0.05); border: 1px solid rgba(0, 240, 255, 0.3); border-radius: 8px; color: #fff; font-family: monospace;"></textarea>
+            </div>
+            <div class="video-modal-footer" style="justify-content: flex-end; gap: 1rem;">
+                <button id="cancelImport" class="btn btn-secondary">
+                    <span>Cancel</span>
+                </button>
+                <button id="confirmImport" class="btn btn-primary">
+                    <span>Import</span>
+                    <div class="btn-glow"></div>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo-text">Dynasty<span class="logo-accent"> labz</span></div>
+                    <p>Empowering businesses through AI innovation</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Dynasty labz. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/video-player.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html>
