@@ -81,8 +81,126 @@
       { "text": "Skills", "link": "skills.html" },
       { "text": "Portfolio", "link": "portfolio.html" },
       { "text": "Tools", "link": "tools.html" },
-      { "text": "Contact", "link": "contact.html" }
+      { "text": "Videos", "link": "videos.html" },
+      { "text": "Contact", "link": "contact.html" },
+      { "text": "Admin", "link": "#admin", "admin": true }
     ]
+  },
+  "portfolio": {
+    "pageTitle": "Portfolio",
+    "pageSubtitle": "Innovative AI Solutions That Drive Results",
+    "items": [
+      {
+        "id": "ballistics-app",
+        "title": "Ballistics Test Application",
+        "description": "Advanced ballistics calculator and testing platform for precision analysis. Built with React and deployed on Vercel.",
+        "icon": "🎯",
+        "tags": ["React", "Physics Engine", "Data Viz", "Vercel"],
+        "featured": true,
+        "link": "#",
+        "badge": "Featured App"
+      },
+      {
+        "id": "knock-knock",
+        "title": "Knock Knock",
+        "description": "Interactive door-to-door sales assistant with AI-powered pitch optimization and lead tracking capabilities.",
+        "icon": "🚪",
+        "tags": ["Next.js", "AI Assistant", "CRM", "Mobile-First"],
+        "featured": true,
+        "link": "#",
+        "badge": "Featured App"
+      },
+      {
+        "id": "ai-focus-group",
+        "title": "AI Focus Group Platform",
+        "description": "Intelligent focus group management system with AI-powered analysis, sentiment detection, and automated reporting.",
+        "icon": "👥",
+        "tags": ["React", "NLP", "Sentiment Analysis", "Real-time"],
+        "featured": true,
+        "link": "#",
+        "badge": "Featured App"
+      },
+      {
+        "id": "crypto-tools",
+        "title": "Crypto Tools Suite",
+        "description": "Comprehensive cryptocurrency analysis toolkit including portfolio tracking, market analysis, and trading signals.",
+        "icon": "₿",
+        "tags": ["TypeScript", "Web3", "Charts", "Real-time Data"],
+        "featured": true,
+        "link": "#",
+        "badge": "Featured App"
+      },
+      {
+        "id": "ai-customer-service",
+        "title": "AI Customer Service Bot",
+        "description": "Intelligent chatbot handling 1000+ customer inquiries daily with 95% accuracy and sentiment-aware responses.",
+        "icon": "🤖",
+        "tags": ["LangChain", "GPT-4", "RAG"],
+        "meta": ["📈 95% Accuracy", "⚡ 24/7 Availability"]
+      },
+      {
+        "id": "report-generator",
+        "title": "Automated Report Generator",
+        "description": "AI-powered business intelligence system generating comprehensive reports from raw data automatically.",
+        "icon": "📊",
+        "tags": ["Python", "Pandas", "Automation"],
+        "meta": ["⏱️ 80% Time Saved", "📈 150+ Reports/Month"]
+      },
+      {
+        "id": "predictive-analytics",
+        "title": "Predictive Analytics Dashboard",
+        "description": "Machine learning platform forecasting sales trends and customer behavior with 92% accuracy.",
+        "icon": "🎯",
+        "tags": ["ML Models", "React", "D3.js"],
+        "meta": ["🎯 92% Accuracy", "💰 $200K Savings"]
+      },
+      {
+        "id": "email-marketing",
+        "title": "Email Marketing Automation",
+        "description": "Intelligent email campaign system with AI-driven personalization and optimal send-time prediction.",
+        "icon": "📧",
+        "tags": ["Automation", "AI Personalization", "APIs"],
+        "meta": ["📈 45% Higher Open Rate", "💵 3x ROI Increase"]
+      },
+      {
+        "id": "document-processing",
+        "title": "Document Processing System",
+        "description": "AI-powered document extraction and classification system processing thousands of documents daily.",
+        "icon": "🔍",
+        "tags": ["OCR", "NLP", "Computer Vision"],
+        "meta": ["⚡ 5000+ Docs/Day", "✅ 98% Accuracy"]
+      },
+      {
+        "id": "integration-hub",
+        "title": "Multi-Platform Integration Hub",
+        "description": "Centralized system connecting CRM, e-commerce, and marketing tools for seamless data flow.",
+        "icon": "🌐",
+        "tags": ["API Integration", "Webhooks", "Real-time Sync"],
+        "meta": ["🔗 15+ Integrations", "⚡ Real-time Sync"]
+      },
+      {
+        "id": "content-generator",
+        "title": "AI Content Generator",
+        "description": "Smart content creation tool generating SEO-optimized blog posts, social media content, and ad copy.",
+        "icon": "🎨",
+        "tags": ["GPT-4", "SEO", "Content AI"],
+        "meta": ["📝 500+ Posts Created", "🚀 70% Faster"]
+      },
+      {
+        "id": "mobile-web-app",
+        "title": "Mobile-First Web App",
+        "description": "Progressive web application for field service management with offline capabilities and GPS tracking.",
+        "icon": "📱",
+        "tags": ["PWA", "React", "Offline-First"],
+        "meta": ["📱 100+ Daily Users", "⚡ Works Offline"]
+      }
+    ],
+    "cta": {
+      "title": "Want to Be the Next Success Story?",
+      "description": "Let's discuss how we can create a custom solution for your business.",
+      "buttonText": "Start Your Project",
+      "link": "contact.html"
+    }
   },
   "footer": {
     "brand": {

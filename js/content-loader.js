@@ -25,7 +25,19 @@ class ContentLoader {
     // Load content from JSON
     async loadContent() {
         try {
-            // Check for preview content first
+            // Check for live updates from admin dashboard first
+            const liveContent = localStorage.getItem('siteContent');
+            if (liveContent) {
+                try {
+                    this.content = JSON.parse(liveContent);
+                    console.log('📦 Loaded content from admin dashboard (live preview)');
+                    return;
+                } catch (e) {
+                    console.warn('Invalid live content in localStorage, falling back to file');
+                }
+            }
+
+            // Check for preview content
             if (this.isPreview) {
                 const previewContent = localStorage.getItem('preview-content');
                 if (previewContent) {
@@ -82,9 +94,10 @@ class ContentLoader {
             const navMenu = document.querySelector('.nav-menu');
             if (navMenu && navMenu.children.length === 0) {
                 // Only populate if empty (to avoid overwriting existing nav)
-                navMenu.innerHTML = header.navigation.map(link => `
-                    <li><a href="${link.link}" class="nav-link">${link.text}</a></li>
-                `).join('');
+                navMenu.innerHTML = header.navigation.map(link => {
+                    const classes = link.admin ? 'nav-link admin-link' : 'nav-link';
+                    return `<li><a href="${link.link}" class="${classes}">${link.text}</a></li>`;
+                }).join('');
             }
         }
     }

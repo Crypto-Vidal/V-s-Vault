@@ -1830,3 +1830,58 @@ button:focus {
         color: black;
     }
 }
+
+/* ==========================================
+   ADMIN PASSWORD MODAL
+   ========================================== */
+.admin-password-modal {
+    max-width: 400px !important;
+}
+
+.admin-password-modal .modal-header h3 {
+    color: var(--cyan);
+    font-size: 1.5rem;
+}
+
+.admin-password-modal .form-input {
+    background: rgba(0, 240, 255, 0.05);
+    border: 2px solid rgba(0, 240, 255, 0.3);
+    border-radius: 12px;
+    color: var(--white);
+    font-family: 'Orbitron', sans-serif;
+}
+
+.admin-password-modal .form-input:focus {
+    border-color: var(--cyan);
+    box-shadow: 0 0 30px rgba(0, 240, 255, 0.3);
+    background: rgba(0, 240, 255, 0.1);
+}
+
+/* Shake Animation */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-10px); }
+    20%, 40%, 60%, 80% { transform: translateX(10px); }
+}
+
+/* ==========================================
+   ADMIN LINK STYLING
+   ========================================== */
+.admin-link {
+    position: relative;
+    color: var(--green) !important;
+}
+
+.admin-link::before {
+    content: '🔐 ';
+    font-size: 0.9rem;
+}
+
+.admin-link::after {
+    background: linear-gradient(135deg, var(--green), var(--cyan)) !important;
+}
+
+.admin-link:hover {
+    color: var(--cyan) !important;
+    text-shadow: 0 0 10px rgba(0, 255, 142, 0.5);
+}
