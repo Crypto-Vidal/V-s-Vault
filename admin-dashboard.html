@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | Dynasty Labz</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/admin-dashboard.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="holo-background">
+        <div class="grid-overlay"></div>
+        <div class="floating-particles"></div>
+    </div>
+
+    <!-- Admin Header -->
+    <div class="admin-header">
+        <div class="container">
+            <div class="admin-header-content">
+                <div class="logo">
+                    <span class="logo-text">Dynasty<span class="logo-accent"> labz</span></span>
+                    <span class="admin-badge">ADMIN</span>
+                </div>
+                <div class="admin-actions">
+                    <button class="btn-icon" id="saveAllBtn" title="Save All Changes">
+                        💾
+                    </button>
+                    <a href="index.html" class="btn-icon" title="Back to Site">
+                        🏠
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Navigation Tabs -->
+    <div class="admin-nav">
+        <div class="container">
+            <div class="admin-tabs">
+                <button class="admin-tab active" data-section="portfolio">
+                    <span class="tab-icon">📁</span>
+                    Portfolio
+                </button>
+                <button class="admin-tab" data-section="home">
+                    <span class="tab-icon">🏠</span>
+                    Home
+                </button>
+                <button class="admin-tab" data-section="services">
+                    <span class="tab-icon">⚙️</span>
+                    Services
+                </button>
+                <button class="admin-tab" data-section="videos">
+                    <span class="tab-icon">🎥</span>
+                    Videos
+                </button>
+                <button class="admin-tab" data-section="settings">
+                    <span class="tab-icon">🔧</span>
+                    Settings
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Admin Content -->
+    <div class="admin-main">
+        <div class="container">
+
+            <!-- PORTFOLIO SECTION -->
+            <section class="admin-section active" id="section-portfolio">
+                <div class="section-header">
+                    <h2 class="section-title gradient-text">Portfolio Management</h2>
+                    <button class="btn btn-primary" id="addPortfolioBtn">
+                        <span>+ Add New Project</span>
+                        <div class="btn-glow"></div>
+                    </button>
+                </div>
+
+                <div class="portfolio-stats">
+                    <div class="stat-card holo-panel">
+                        <div class="panel-glow"></div>
+                        <div class="stat-value" id="totalProjects">12</div>
+                        <div class="stat-label">Total Projects</div>
+                    </div>
+                    <div class="stat-card holo-panel">
+                        <div class="panel-glow"></div>
+                        <div class="stat-value" id="featuredProjects">4</div>
+                        <div class="stat-label">Featured</div>
+                    </div>
+                    <div class="stat-card holo-panel">
+                        <div class="panel-glow"></div>
+                        <div class="stat-value" id="regularProjects">8</div>
+                        <div class="stat-label">Regular</div>
+                    </div>
+                </div>
+
+                <div class="portfolio-list" id="portfolioList">
+                    <!-- Portfolio items will be loaded here -->
+                </div>
+            </section>
+
+            <!-- HOME SECTION -->
+            <section class="admin-section" id="section-home">
+                <div class="section-header">
+                    <h2 class="section-title gradient-text">Home Page Content</h2>
+                    <button class="btn btn-primary" id="saveHomeBtn">
+                        <span>Save Changes</span>
+                        <div class="btn-glow"></div>
+                    </button>
+                </div>
+
+                <div class="holo-panel form-panel">
+                    <div class="panel-glow"></div>
+                    <h3>Hero Section</h3>
+                    <div class="form-group">
+                        <label>Title Line 1</label>
+                        <input type="text" id="heroLine1" class="form-input" placeholder="Transforming Businesses">
+                    </div>
+                    <div class="form-group">
+                        <label>Title Line 2</label>
+                        <input type="text" id="heroLine2" class="form-input" placeholder="With AI Intelligence">
+                    </div>
+                    <div class="form-group">
+                        <label>Subtitle</label>
+                        <input type="text" id="heroSubtitle" class="form-input" placeholder="AI Consultant & App Builder...">
+                    </div>
+                </div>
+
+                <div class="holo-panel form-panel">
+                    <div class="panel-glow"></div>
+                    <h3>Call to Action</h3>
+                    <div class="form-group">
+                        <label>CTA Title</label>
+                        <input type="text" id="ctaTitle" class="form-input" placeholder="Ready to Transform Your Business?">
+                    </div>
+                    <div class="form-group">
+                        <label>CTA Description</label>
+                        <textarea id="ctaDescription" class="form-input" rows="3"></textarea>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SERVICES SECTION -->
+            <section class="admin-section" id="section-services">
+                <div class="section-header">
+                    <h2 class="section-title gradient-text">Services Management</h2>
+                    <button class="btn btn-primary" id="addServiceBtn">
+                        <span>+ Add Service</span>
+                        <div class="btn-glow"></div>
+                    </button>
+                </div>
+
+                <div class="services-list" id="servicesList">
+                    <!-- Services will be loaded here -->
+                </div>
+            </section>
+
+            <!-- VIDEOS SECTION -->
+            <section class="admin-section" id="section-videos">
+                <div class="section-header">
+                    <h2 class="section-title gradient-text">Videos Management</h2>
+                    <p>Manage your video gallery content here.</p>
+                </div>
+                <div class="holo-panel">
+                    <div class="panel-glow"></div>
+                    <p style="text-align: center; padding: 2rem; color: var(--gray-light);">
+                        Video management coming soon...
+                    </p>
+                </div>
+            </section>
+
+            <!-- SETTINGS SECTION -->
+            <section class="admin-section" id="section-settings">
+                <div class="section-header">
+                    <h2 class="section-title gradient-text">Settings</h2>
+                </div>
+
+                <div class="holo-panel form-panel">
+                    <div class="panel-glow"></div>
+                    <h3>Admin Access</h3>
+                    <div class="form-group">
+                        <label>Current Access Code</label>
+                        <input type="text" class="form-input" value="1234" disabled>
+                        <small style="color: var(--gray-light);">Access code is currently: 1234</small>
+                    </div>
+                </div>
+
+                <div class="holo-panel form-panel">
+                    <div class="panel-glow"></div>
+                    <h3>Data Management</h3>
+                    <button class="btn btn-secondary" id="exportDataBtn">
+                        <span>📥 Export All Data</span>
+                    </button>
+                    <button class="btn btn-secondary" id="resetDataBtn" style="margin-left: 1rem;">
+                        <span>🔄 Reset to Default</span>
+                    </button>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <!-- Add/Edit Portfolio Modal -->
+    <div class="modal" id="portfolioModal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content holo-panel">
+            <div class="panel-glow"></div>
+            <div class="modal-header">
+                <h3 id="modalTitle">Add New Project</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Project Title *</label>
+                    <input type="text" id="projectTitle" class="form-input" placeholder="e.g., AI Customer Service Bot" required>
+                </div>
+                <div class="form-group">
+                    <label>Description *</label>
+                    <textarea id="projectDescription" class="form-input" rows="3" placeholder="Brief description of the project..." required></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Icon/Emoji *</label>
+                    <input type="text" id="projectIcon" class="form-input" placeholder="e.g., 🤖" maxlength="2" required>
+                </div>
+                <div class="form-group">
+                    <label>Tags (comma-separated) *</label>
+                    <input type="text" id="projectTags" class="form-input" placeholder="e.g., React, AI, Automation" required>
+                </div>
+                <div class="form-group">
+                    <label>Live Demo Link</label>
+                    <input type="url" id="projectLink" class="form-input" placeholder="https://example.com">
+                </div>
+                <div class="form-group">
+                    <label>Meta Stats (comma-separated)</label>
+                    <input type="text" id="projectMeta" class="form-input" placeholder="e.g., 📈 95% Accuracy, ⚡ 24/7 Availability">
+                </div>
+                <div class="form-group checkbox-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="projectFeatured">
+                        <span>Mark as Featured Project</span>
+                    </label>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary modal-cancel">Cancel</button>
+                <button class="btn btn-primary" id="saveProjectBtn">
+                    <span>Save Project</span>
+                    <div class="btn-glow"></div>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Confirmation Modal -->
+    <div class="modal" id="confirmModal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content holo-panel confirm-modal">
+            <div class="panel-glow"></div>
+            <div class="modal-header">
+                <h3 id="confirmTitle">Are you sure?</h3>
+            </div>
+            <div class="modal-body">
+                <p id="confirmMessage">This action cannot be undone.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="confirmCancel">Cancel</button>
+                <button class="btn btn-danger" id="confirmOk">
+                    <span>Yes, I'm sure</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Toast -->
+    <div class="toast" id="successToast">
+        <div class="toast-icon">✓</div>
+        <div class="toast-message">Changes saved successfully!</div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/admin-dashboard.js"></script>
+</body>
+</html>
