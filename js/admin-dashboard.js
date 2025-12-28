@@ -346,38 +346,151 @@ class AdminDashboard {
        ======================================== */
 
     initServices() {
+        const addBtn = document.getElementById('addServiceBtn');
+        const saveBtn = document.getElementById('saveServiceBtn');
+
+        addBtn.addEventListener('click', () => this.openServiceModal());
+        saveBtn.addEventListener('click', () => this.saveService());
+
         this.loadServicesContent();
     }
 
     loadServicesContent() {
         const list = document.getElementById('servicesList');
-        const services = this.content.home?.services?.cards || [];
+
+        // Initialize services structure if it doesn't exist
+        if (!this.content.home) {
+            this.content.home = {};
+        }
+        if (!this.content.home.services) {
+            this.content.home.services = { cards: [] };
+        }
+
+        const services = this.content.home.services.cards || [];
 
         if (services.length === 0) {
             list.innerHTML = `
                 <div class="empty-state">
                     <div class="empty-state-icon">⚙️</div>
-                    <h3>No services found</h3>
-                    <p>Services are managed in the home section of site-content.json</p>
+                    <h3>No services yet</h3>
+                    <p>Click "Add Service" to create your first service card.</p>
                 </div>
             `;
             return;
         }
 
-        list.innerHTML = services.map(service => `
-            <div class="service-item-admin">
-                <div class="portfolio-icon">${service.icon}</div>
+        list.innerHTML = services.map((service, index) => `
+            <div class="service-item-admin" data-index="${index}">
+                <div class="portfolio-icon">${service.icon || '⚙️'}</div>
                 <div class="portfolio-details">
                     <h3>${service.title}</h3>
                     <p>${service.description}</p>
                 </div>
                 <div class="portfolio-actions">
-                    <button class="btn-edit" disabled>
+                    <button class="btn-edit" onclick="adminDashboard.editService(${index})">
                         ✏️ Edit
+                    </button>
+                    <button class="btn-delete" onclick="adminDashboard.deleteService(${index})">
+                        🗑️ Delete
                     </button>
                 </div>
             </div>
         `).join('');
+    }
+
+    openServiceModal(serviceIndex = null) {
+        const modal = document.getElementById('serviceModal');
+        const modalTitle = document.getElementById('serviceModalTitle');
+
+        if (serviceIndex !== null) {
+            // Edit mode
+            modalTitle.textContent = 'Edit Service';
+            this.currentEditId = serviceIndex;
+            this.loadServiceData(serviceIndex);
+        } else {
+            // Add mode
+            modalTitle.textContent = 'Add New Service';
+            this.currentEditId = null;
+            this.clearServiceForm();
+        }
+
+        modal.classList.add('active');
+    }
+
+    loadServiceData(serviceIndex) {
+        const service = this.content.home.services.cards[serviceIndex];
+        if (!service) return;
+
+        document.getElementById('serviceIcon').value = service.icon || '';
+        document.getElementById('serviceTitle').value = service.title || '';
+        document.getElementById('serviceDescription').value = service.description || '';
+        document.getElementById('serviceLink').value = service.link || '';
+    }
+
+    clearServiceForm() {
+        document.getElementById('serviceIcon').value = '';
+        document.getElementById('serviceTitle').value = '';
+        document.getElementById('serviceDescription').value = '';
+        document.getElementById('serviceLink').value = '';
+    }
+
+    saveService() {
+        const icon = document.getElementById('serviceIcon').value.trim();
+        const title = document.getElementById('serviceTitle').value.trim();
+        const description = document.getElementById('serviceDescription').value.trim();
+        const link = document.getElementById('serviceLink').value.trim();
+
+        // Validation
+        if (!icon || !title || !description) {
+            alert('Please fill in all required fields (marked with *)');
+            return;
+        }
+
+        this.showConfirmation(
+            'Save Service',
+            `Are you sure you want to ${this.currentEditId !== null ? 'update' : 'add'} this service?`,
+            () => {
+                const serviceData = {
+                    icon,
+                    title,
+                    description,
+                    link: link || '#'
+                };
+
+                if (this.currentEditId !== null) {
+                    // Update existing
+                    this.content.home.services.cards[this.currentEditId] = serviceData;
+                } else {
+                    // Add new
+                    this.content.home.services.cards.push(serviceData);
+                }
+
+                // Save changes
+                this.saveToLocalStorage();
+                this.loadServicesContent();
+                this.closeModal('serviceModal');
+                this.clearServiceForm();
+            }
+        );
+    }
+
+    editService(serviceIndex) {
+        this.openServiceModal(serviceIndex);
+    }
+
+    deleteService(serviceIndex) {
+        const service = this.content.home.services.cards[serviceIndex];
+        if (!service) return;
+
+        this.showConfirmation(
+            'Delete Service',
+            `Are you sure you want to delete "${service.title}"? This action cannot be undone.`,
+            () => {
+                this.content.home.services.cards.splice(serviceIndex, 1);
+                this.saveToLocalStorage();
+                this.loadServicesContent();
+            }
+        );
     }
 
     /* ========================================
