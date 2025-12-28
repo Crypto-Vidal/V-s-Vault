@@ -21,7 +21,7 @@
         <div class="container">
             <div class="admin-header-content">
                 <div class="logo">
-                    <span class="logo-text">Dynasty<span class="logo-accent"> labz</span></span>
+                    <span class="logo-text">Dynasty<span class="logo-accent"> Labs</span></span>
                     <span class="admin-badge">ADMIN</span>
                 </div>
                 <div class="admin-actions">
@@ -152,7 +152,7 @@
                     </button>
                 </div>
 
-                <div class="services-list" id="servicesList">
+                <div class="services-grid-admin" id="servicesList">
                     <!-- Services will be loaded here -->
                 </div>
             </section>
@@ -247,6 +247,43 @@
                 <button class="btn btn-secondary modal-cancel">Cancel</button>
                 <button class="btn btn-primary" id="saveProjectBtn">
                     <span>Save Project</span>
+                    <div class="btn-glow"></div>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add/Edit Service Modal -->
+    <div class="modal" id="serviceModal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content holo-panel">
+            <div class="panel-glow"></div>
+            <div class="modal-header">
+                <h3 id="serviceModalTitle">Add New Service</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Service Icon *</label>
+                    <input type="text" id="serviceIcon" class="form-input" placeholder="e.g., 🤖" maxlength="2" required>
+                </div>
+                <div class="form-group">
+                    <label>Service Title *</label>
+                    <input type="text" id="serviceTitle" class="form-input" placeholder="e.g., AI Customer Assistant" required>
+                </div>
+                <div class="form-group">
+                    <label>Description *</label>
+                    <textarea id="serviceDescription" class="form-input" rows="3" placeholder="Describe the service benefits..." required></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Link URL</label>
+                    <input type="url" id="serviceLink" class="form-input" placeholder="https://example.com">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary modal-cancel">Cancel</button>
+                <button class="btn btn-primary" id="saveServiceBtn">
+                    <span>Save Service</span>
                     <div class="btn-glow"></div>
                 </button>
             </div>

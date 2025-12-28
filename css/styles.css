@@ -16,6 +16,8 @@
     --color-white: #FFFFFF;
     --color-accent: #3D3D3D;
     --color-subtle: #666666;
+    --color-orange: #FF6B35;
+    --color-orange-light: #FF8C61;
 
     /* Typography Scale */
     --font-display: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
@@ -353,6 +355,23 @@ p {
     font-weight: 500;
 }
 
+.hero-badge {
+    display: inline-block;
+    padding: var(--space-2) var(--space-4);
+    font-size: var(--text-xs);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-white);
+    background-color: var(--color-orange);
+    border-radius: 20px;
+    margin-bottom: var(--space-6);
+    font-weight: 600;
+}
+
+.hero-accent {
+    color: var(--color-orange);
+}
+
 .hero-title {
     margin-bottom: var(--space-8);
 }
@@ -440,6 +459,40 @@ p {
 .btn-secondary:hover {
     background-color: var(--color-white);
     color: var(--color-black);
+}
+
+.btn-primary-large {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-6) var(--space-12);
+    font-size: var(--text-lg);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+    background-color: var(--color-orange);
+    color: var(--color-white);
+    border: none;
+    border-radius: 8px;
+    transition: all var(--transition-base);
+    cursor: pointer;
+}
+
+.btn-primary-large:hover {
+    background-color: var(--color-orange-light);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(255, 107, 53, 0.3);
+}
+
+.btn-icon {
+    font-size: var(--text-base);
+}
+
+.cta-note {
+    font-size: var(--text-sm);
+    color: var(--color-subtle);
+    margin-top: var(--space-4);
+    margin-bottom: 0;
 }
 
 /* ==========================================
@@ -686,6 +739,178 @@ section {
 
 .portfolio-item p {
     max-width: 600px;
+}
+
+/* ==========================================
+   RESULTS SECTION
+   ========================================== */
+.results-section {
+    background-color: var(--color-slate);
+    padding: var(--space-24) 0;
+    border-top: var(--border-width) solid var(--border-color);
+    border-bottom: var(--border-width) solid var(--border-color);
+}
+
+.results-grid {
+    display: grid;
+    gap: var(--space-12);
+    margin-top: var(--space-12);
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.result-item {
+    text-align: center;
+    padding: var(--space-8);
+}
+
+.result-number {
+    font-family: var(--font-display);
+    font-size: var(--text-6xl);
+    font-weight: 700;
+    color: var(--color-orange);
+    line-height: 1;
+    margin-bottom: var(--space-4);
+}
+
+.result-label {
+    font-size: var(--text-lg);
+    color: var(--color-warm-gray);
+    text-transform: none;
+    letter-spacing: normal;
+}
+
+/* ==========================================
+   PROBLEM & SOLUTION SECTIONS
+   ========================================== */
+.problem-section {
+    background-color: var(--color-black);
+}
+
+.section-eyebrow-icon {
+    font-size: var(--text-base);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-orange);
+    margin-bottom: var(--space-4);
+    font-weight: 600;
+}
+
+.service-icon {
+    font-size: var(--text-5xl);
+    margin-bottom: var(--space-6);
+    display: block;
+}
+
+.common-problems {
+    background-color: var(--color-charcoal);
+    padding: var(--space-32) 0;
+}
+
+.problems-list {
+    max-width: 800px;
+    margin: var(--space-16) auto 0;
+    display: grid;
+    gap: var(--space-6);
+}
+
+.problem-item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-6);
+    padding: var(--space-6);
+    background-color: rgba(255, 107, 53, 0.05);
+    border-left: 3px solid var(--color-orange);
+    border-radius: 4px;
+}
+
+.problem-icon {
+    font-size: var(--text-2xl);
+    color: var(--color-orange);
+    flex-shrink: 0;
+}
+
+.problem-text {
+    font-size: var(--text-lg);
+    color: var(--color-warm-gray);
+    line-height: 1.6;
+}
+
+/* ==========================================
+   TESTIMONIAL SECTION
+   ========================================== */
+.testimonial-section {
+    background-color: var(--color-slate);
+    padding: var(--space-32) 0;
+}
+
+.testimonial-card {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: var(--space-12);
+    background-color: rgba(255, 255, 255, 0.02);
+    border: var(--border-width) solid var(--border-color);
+    border-radius: 12px;
+    text-align: center;
+}
+
+.stars {
+    font-size: var(--text-2xl);
+    margin-bottom: var(--space-6);
+}
+
+.testimonial-quote {
+    font-family: var(--font-display);
+    font-size: var(--text-2xl);
+    font-style: italic;
+    color: var(--color-white);
+    line-height: 1.5;
+    margin: var(--space-8) 0;
+    font-weight: 300;
+}
+
+.testimonial-author {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-4);
+    margin-top: var(--space-8);
+}
+
+.author-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--color-orange), var(--color-orange-light));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--text-2xl);
+    font-weight: 700;
+    color: var(--color-white);
+}
+
+.author-info {
+    text-align: left;
+}
+
+.author-name {
+    font-size: var(--text-lg);
+    font-weight: 600;
+    color: var(--color-white);
+    margin-bottom: var(--space-1);
+}
+
+.author-title {
+    font-size: var(--text-sm);
+    color: var(--color-subtle);
+}
+
+/* ==========================================
+   PORTFOLIO ICON
+   ========================================== */
+.portfolio-icon {
+    font-size: var(--text-4xl);
+    margin-right: var(--space-4);
 }
 
 /* ==========================================
