@@ -13,7 +13,6 @@ document.addEventListener('DOMContentLoaded', () => {
     initHolographicEffects();
     initIntersectionObserver();
     initSmoothScroll();
-    initAdminAccess();
 });
 
 // ==========================================
@@ -504,117 +503,6 @@ if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     document.documentElement.style.setProperty('--transition-fast', '0s');
     document.documentElement.style.setProperty('--transition-normal', '0s');
     document.documentElement.style.setProperty('--transition-slow', '0s');
-}
-
-// ==========================================
-// ADMIN ACCESS
-// ==========================================
-function initAdminAccess() {
-    // Create password modal HTML if it doesn't exist
-    if (!document.getElementById('adminPasswordModal')) {
-        const modalHTML = `
-            <div class="modal" id="adminPasswordModal">
-                <div class="modal-overlay"></div>
-                <div class="modal-content holo-panel admin-password-modal">
-                    <div class="panel-glow"></div>
-                    <div class="modal-header">
-                        <h3>🔐 Admin Access</h3>
-                        <button class="modal-close">&times;</button>
-                    </div>
-                    <div class="modal-body">
-                        <p style="color: var(--gray-light); margin-bottom: 1.5rem;">
-                            Enter the admin code to access the dashboard
-                        </p>
-                        <div class="form-group">
-                            <input type="password" id="adminPasswordInput"
-                                   class="form-input"
-                                   placeholder="Enter code..."
-                                   maxlength="4"
-                                   autocomplete="off"
-                                   style="text-align: center; font-size: 1.5rem; letter-spacing: 0.5rem;">
-                        </div>
-                        <div id="adminPasswordError" style="color: #ff3b30; font-size: 0.875rem; margin-top: 0.5rem; display: none;">
-                            Incorrect code. Try again.
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button class="btn btn-secondary" id="adminPasswordCancel">Cancel</button>
-                        <button class="btn btn-primary" id="adminPasswordSubmit">
-                            <span>Enter Dashboard</span>
-                            <div class="btn-glow"></div>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        `;
-        document.body.insertAdjacentHTML('beforeend', modalHTML);
-    }
-
-    // Get modal elements
-    const modal = document.getElementById('adminPasswordModal');
-    const input = document.getElementById('adminPasswordInput');
-    const submitBtn = document.getElementById('adminPasswordSubmit');
-    const cancelBtn = document.getElementById('adminPasswordCancel');
-    const closeBtn = modal.querySelector('.modal-close');
-    const errorMsg = document.getElementById('adminPasswordError');
-
-    // Handle Admin link clicks
-    document.addEventListener('click', (e) => {
-        const link = e.target.closest('a[href="#admin"]');
-        if (link) {
-            e.preventDefault();
-            openAdminModal();
-        }
-    });
-
-    function openAdminModal() {
-        modal.classList.add('active');
-        input.value = '';
-        errorMsg.style.display = 'none';
-        setTimeout(() => input.focus(), 100);
-    }
-
-    function closeAdminModal() {
-        modal.classList.remove('active');
-        input.value = '';
-        errorMsg.style.display = 'none';
-    }
-
-    function checkPassword() {
-        const password = input.value;
-        const correctPassword = '1234';
-
-        if (password === correctPassword) {
-            // Correct password - redirect to admin dashboard
-            window.location.href = 'admin-dashboard.html';
-        } else {
-            // Wrong password
-            errorMsg.style.display = 'block';
-            input.value = '';
-            input.focus();
-
-            // Shake animation
-            modal.querySelector('.modal-content').style.animation = 'shake 0.5s';
-            setTimeout(() => {
-                modal.querySelector('.modal-content').style.animation = '';
-            }, 500);
-        }
-    }
-
-    // Event listeners
-    submitBtn.addEventListener('click', checkPassword);
-    cancelBtn.addEventListener('click', closeAdminModal);
-    closeBtn.addEventListener('click', closeAdminModal);
-
-    // Press Enter to submit
-    input.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') {
-            checkPassword();
-        }
-    });
-
-    // Close on overlay click
-    modal.querySelector('.modal-overlay').addEventListener('click', closeAdminModal);
 }
 
 // ==========================================

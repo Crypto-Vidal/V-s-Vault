@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Access | Dynasty Labz</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .login-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .login-panel {
+            width: 100%;
+            max-width: 450px;
+            padding: 3rem;
+            text-align: center;
+        }
+
+        .login-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .login-title {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, var(--cyan), var(--green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .login-subtitle {
+            color: var(--gray-light);
+            margin-bottom: 2rem;
+            font-size: 1rem;
+        }
+
+        .password-input-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .password-input {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            background: rgba(0, 240, 255, 0.05);
+            border: 2px solid rgba(0, 240, 255, 0.3);
+            border-radius: 12px;
+            color: var(--white);
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            text-align: center;
+            letter-spacing: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .password-input:focus {
+            outline: none;
+            border-color: var(--cyan);
+            box-shadow: 0 0 30px rgba(0, 240, 255, 0.3);
+            background: rgba(0, 240, 255, 0.1);
+        }
+
+        .password-input::placeholder {
+            letter-spacing: normal;
+            color: rgba(160, 174, 192, 0.5);
+        }
+
+        .error-message {
+            color: #ff3b30;
+            font-size: 0.875rem;
+            margin-top: 0.5rem;
+            display: none;
+            animation: shake 0.5s;
+        }
+
+        .error-message.show {
+            display: block;
+        }
+
+        .login-button {
+            width: 100%;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, var(--cyan), var(--green));
+            border: none;
+            border-radius: 12px;
+            color: var(--bg-dark);
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .login-button:hover {
+            box-shadow: 0 0 30px rgba(0, 240, 255, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .login-button:active {
+            transform: translateY(0);
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 2rem;
+            color: var(--gray-light);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: var(--cyan);
+        }
+
+        .shake-panel {
+            animation: shake 0.5s;
+        }
+    </style>
+</head>
+<body>
+    <div class="holo-background">
+        <div class="grid-overlay"></div>
+        <div class="floating-particles"></div>
+    </div>
+
+    <div class="login-container">
+        <div class="holo-panel login-panel" id="loginPanel">
+            <div class="panel-glow"></div>
+
+            <div class="login-icon">🔐</div>
+
+            <h1 class="login-title">Admin Access</h1>
+            <p class="login-subtitle">Enter your access code to continue</p>
+
+            <form id="loginForm" onsubmit="return false;">
+                <div class="password-input-group">
+                    <input
+                        type="password"
+                        id="passwordInput"
+                        class="password-input"
+                        placeholder="Enter code..."
+                        maxlength="4"
+                        autocomplete="off"
+                        autofocus
+                    >
+                    <div class="error-message" id="errorMessage">
+                        ❌ Incorrect code. Please try again.
+                    </div>
+                </div>
+
+                <button type="submit" class="login-button" id="loginButton">
+                    Enter Dashboard
+                </button>
+            </form>
+
+            <a href="index.html" class="back-link">← Back to Website</a>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script>
+        const passwordInput = document.getElementById('passwordInput');
+        const loginButton = document.getElementById('loginButton');
+        const errorMessage = document.getElementById('errorMessage');
+        const loginPanel = document.getElementById('loginPanel');
+        const loginForm = document.getElementById('loginForm');
+
+        const CORRECT_PASSWORD = '1234';
+
+        function checkPassword() {
+            const password = passwordInput.value;
+
+            if (password === CORRECT_PASSWORD) {
+                // Correct password - redirect to dashboard
+                window.location.href = 'admin-dashboard.html';
+            } else {
+                // Wrong password - show error
+                errorMessage.classList.add('show');
+                passwordInput.value = '';
+                passwordInput.focus();
+
+                // Shake animation
+                loginPanel.classList.add('shake-panel');
+                setTimeout(() => {
+                    loginPanel.classList.remove('shake-panel');
+                }, 500);
+
+                // Hide error after 3 seconds
+                setTimeout(() => {
+                    errorMessage.classList.remove('show');
+                }, 3000);
+            }
+        }
+
+        // Form submit
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            checkPassword();
+        });
+
+        // Button click
+        loginButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            checkPassword();
+        });
+
+        // Enter key
+        passwordInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                checkPassword();
+            }
+        });
+    </script>
+</body>
+</html>

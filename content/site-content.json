@@ -83,7 +83,7 @@
       { "text": "Tools", "link": "tools.html" },
       { "text": "Videos", "link": "videos.html" },
       { "text": "Contact", "link": "contact.html" },
-      { "text": "Admin", "link": "#admin", "admin": true }
+      { "text": "Admin", "link": "admin-login.html", "admin": true }
     ]
   },
   "portfolio": {
