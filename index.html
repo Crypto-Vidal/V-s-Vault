@@ -7,13 +7,16 @@
     <link rel="stylesheet" href="css/styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
     <!-- Background Animation -->
     <div class="holo-background">
         <div class="grid-overlay"></div>
         <div class="floating-particles"></div>
+        <canvas id="particle-canvas"></canvas>
     </div>
 
     <!-- Navigation -->
@@ -127,7 +130,7 @@
                     <div class="card-glow"></div>
                     <div class="card-icon">
                         <div class="icon-ring"></div>
-                        <span>🤖</span>
+                        <i data-lucide="brain-circuit" stroke-width="1.5"></i>
                     </div>
                     <h3>AI Integration</h3>
                     <p>Seamlessly integrate cutting-edge AI solutions into your existing business workflows and systems.</p>
@@ -138,7 +141,7 @@
                     <div class="card-glow"></div>
                     <div class="card-icon">
                         <div class="icon-ring"></div>
-                        <span>⚡</span>
+                        <i data-lucide="zap" stroke-width="1.5"></i>
                     </div>
                     <h3>Automation</h3>
                     <p>Streamline operations with intelligent automation that saves time and reduces costs.</p>
@@ -149,7 +152,7 @@
                     <div class="card-glow"></div>
                     <div class="card-icon">
                         <div class="icon-ring"></div>
-                        <span>💻</span>
+                        <i data-lucide="code-2" stroke-width="1.5"></i>
                     </div>
                     <h3>Custom Apps</h3>
                     <p>Build tailored applications designed specifically for your unique business needs.</p>
@@ -160,7 +163,7 @@
                     <div class="card-glow"></div>
                     <div class="card-icon">
                         <div class="icon-ring"></div>
-                        <span>📊</span>
+                        <i data-lucide="trending-up" stroke-width="1.5"></i>
                     </div>
                     <h3>Consulting</h3>
                     <p>Strategic guidance to help you navigate the AI landscape and make informed decisions.</p>
@@ -221,5 +224,9 @@
 
     <script src="js/content-loader.js"></script>
     <script src="js/main.js"></script>
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+    </script>
 </body>
 </html>
