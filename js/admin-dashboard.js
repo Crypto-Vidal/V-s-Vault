@@ -499,10 +499,32 @@ class AdminDashboard {
 
     initSettings() {
         const exportBtn = document.getElementById('exportDataBtn');
+        const refreshBtn = document.getElementById('refreshDataBtn');
         const resetBtn = document.getElementById('resetDataBtn');
 
         exportBtn.addEventListener('click', () => this.exportContent());
+        refreshBtn.addEventListener('click', () => this.refreshData());
         resetBtn.addEventListener('click', () => this.resetData());
+    }
+
+    refreshData() {
+        this.showConfirmation(
+            'Refresh from JSON',
+            'This will reload data from site-content.json file, replacing any unsaved changes in the current session. Continue?',
+            async () => {
+                // Clear localStorage and reload from file
+                localStorage.removeItem('siteContent');
+                await this.loadContent();
+
+                // Reload all sections
+                this.renderPortfolioList();
+                this.updateStats();
+                this.loadHomeContent();
+                this.loadServicesContent();
+
+                this.showToast('Data refreshed from JSON file!');
+            }
+        );
     }
 
     resetData() {
