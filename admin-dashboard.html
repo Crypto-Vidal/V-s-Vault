@@ -11,6 +11,25 @@
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Password Protection Overlay -->
+    <div id="passwordOverlay" class="password-overlay">
+        <div class="password-modal">
+            <div class="password-header">
+                <span class="logo-text">Dynasty<span class="logo-accent"> Labz</span></span>
+                <h2>Admin Access</h2>
+                <p>Enter access code to continue</p>
+            </div>
+            <div class="password-body">
+                <input type="password" id="passwordInput" class="password-input" placeholder="Enter code..." autocomplete="off" maxlength="4">
+                <button id="passwordSubmit" class="btn btn-primary">
+                    <span>Unlock Dashboard</span>
+                    <div class="btn-glow"></div>
+                </button>
+                <p class="password-error" id="passwordError" style="display: none;">❌ Incorrect code. Try again.</p>
+            </div>
+        </div>
+    </div>
+
     <div class="holo-background">
         <div class="grid-overlay"></div>
         <div class="floating-particles"></div>
@@ -318,5 +337,57 @@
 
     <script src="js/main.js"></script>
     <script src="js/admin-dashboard.js"></script>
+    <script>
+        // Password Protection
+        (function() {
+            const ADMIN_PASSWORD = '1234';
+            const overlay = document.getElementById('passwordOverlay');
+            const input = document.getElementById('passwordInput');
+            const submit = document.getElementById('passwordSubmit');
+            const error = document.getElementById('passwordError');
+
+            // Check if already authenticated in this session
+            if (sessionStorage.getItem('adminAuthenticated') === 'true') {
+                overlay.classList.add('hidden');
+                return;
+            }
+
+            // Submit on button click
+            submit.addEventListener('click', checkPassword);
+
+            // Submit on Enter key
+            input.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    checkPassword();
+                }
+            });
+
+            // Focus input on load
+            input.focus();
+
+            function checkPassword() {
+                const enteredPassword = input.value;
+
+                if (enteredPassword === ADMIN_PASSWORD) {
+                    // Correct password
+                    sessionStorage.setItem('adminAuthenticated', 'true');
+                    overlay.style.animation = 'fadeOut 0.3s ease';
+                    setTimeout(() => {
+                        overlay.classList.add('hidden');
+                    }, 300);
+                } else {
+                    // Wrong password
+                    error.style.display = 'block';
+                    input.value = '';
+                    input.style.borderColor = '#ff4444';
+
+                    setTimeout(() => {
+                        error.style.display = 'none';
+                        input.style.borderColor = 'rgba(0, 240, 255, 0.3)';
+                    }, 2000);
+                }
+            }
+        })();
+    </script>
 </body>
 </html>
