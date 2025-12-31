@@ -28,9 +28,18 @@
             <div class="nav-admin">
                 <a href="admin.html" class="admin-link">Admin</a>
                 <button class="mobile-menu-toggle" aria-label="Toggle menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+                    <svg class="menu-doodle" width="40" height="40" viewBox="0 0 40 40">
+                        <!-- Fun doodle background -->
+                        <circle cx="20" cy="20" r="18" fill="rgba(255,107,107,0.15)" stroke="#ff6b6b" stroke-width="1.5" stroke-dasharray="2,3"/>
+                        <!-- Hamburger lines with doodle style -->
+                        <path class="menu-line line-1" d="M10,14 Q20,13 30,14" stroke="#00F0FF" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+                        <path class="menu-line line-2" d="M10,20 Q20,19.5 30,20" stroke="#EC4899" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+                        <path class="menu-line line-3" d="M10,26 Q20,26.5 30,26" stroke="#10B981" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+                        <!-- Fun sparkles -->
+                        <circle class="sparkle sparkle-1" cx="8" cy="10" r="1.5" fill="#ffd93d"/>
+                        <circle class="sparkle sparkle-2" cx="32" cy="12" r="1" fill="#6bcf7f"/>
+                        <circle class="sparkle sparkle-3" cx="35" cy="28" r="1.5" fill="#ff6b6b"/>
+                    </svg>
                 </button>
             </div>
         </div>
@@ -38,13 +47,34 @@
 
     <!-- Hero Section -->
     <section class="hero-section">
+        <!-- Fun floating doodles -->
+        <svg class="hero-doodle doodle-star-1" width="80" height="80" viewBox="0 0 80 80">
+            <path d="M40,10 L45,30 L65,35 L45,40 L40,60 L35,40 L15,35 L35,30 Z" fill="none" stroke="#ffd93d" stroke-width="2" stroke-dasharray="3,2"/>
+        </svg>
+        <svg class="hero-doodle doodle-circle-1" width="60" height="60" viewBox="0 0 60 60">
+            <circle cx="30" cy="30" r="25" fill="none" stroke="#00F0FF" stroke-width="2.5" stroke-dasharray="4,3"/>
+            <circle cx="30" cy="30" r="18" fill="none" stroke="#EC4899" stroke-width="1.5" stroke-dasharray="2,2"/>
+        </svg>
+        <svg class="hero-doodle doodle-squiggle-1" width="100" height="100" viewBox="0 0 100 100">
+            <path d="M10,50 Q25,20 40,50 T70,50 T95,50" fill="none" stroke="#10B981" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="5,3"/>
+        </svg>
+        <svg class="hero-doodle doodle-arrow" width="70" height="70" viewBox="0 0 70 70">
+            <path d="M10,50 Q30,30 50,50 M50,50 L45,40 M50,50 L60,45" fill="none" stroke="#ff6b6b" stroke-width="2.5" stroke-linecap="round"/>
+        </svg>
+        <svg class="hero-doodle doodle-lightning" width="50" height="70" viewBox="0 0 50 70">
+            <path d="M25,5 L15,35 L30,35 L20,65 L40,25 L27,25 Z" fill="#ffd93d" opacity="0.7"/>
+        </svg>
+
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text">
-                    <p class="hero-badge">FOR LOCAL BUSINESSES</p>
+                    <p class="hero-badge">FOR LOCAL BUSINESSES ✨</p>
 
                     <h1 class="hero-title">
                         Stop Losing Customers<br><span class="hero-accent">At The Door</span>
+                        <svg class="title-doodle" width="120" height="20" viewBox="0 0 120 20">
+                            <path d="M5,15 Q30,5 60,10 T115,12" fill="none" stroke="#ff6b6b" stroke-width="3" stroke-linecap="round" stroke-dasharray="5,3"/>
+                        </svg>
                     </h1>
 
                     <p class="hero-subtitle">
@@ -54,6 +84,9 @@
                     <div class="hero-cta">
                         <a href="contact.html" class="btn btn-primary-large">
                             <span class="btn-icon">▶</span> Start Free Consultation
+                            <svg class="btn-doodle" width="30" height="30" viewBox="0 0 30 30">
+                                <circle cx="15" cy="15" r="12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="2,2" opacity="0.5"/>
+                            </svg>
                         </a>
                         <p class="cta-note">No credit card required · 30-minute strategy call</p>
                     </div>
@@ -93,6 +126,9 @@
 
             <div class="services-grid">
                 <div class="service-card">
+                    <svg class="card-doodle" width="50" height="50" viewBox="0 0 50 50">
+                        <circle cx="10" cy="10" r="8" fill="none" stroke="#00F0FF" stroke-width="1.5" stroke-dasharray="2,2" opacity="0.5"/>
+                    </svg>
                     <div class="service-icon">🤖</div>
                     <h3>AI Customer Assistant</h3>
                     <p>Never miss a lead again. Instant responses to customer inquiries 24/7, even when you're closed or busy.</p>
@@ -100,6 +136,9 @@
                 </div>
 
                 <div class="service-card">
+                    <svg class="card-doodle" width="50" height="50" viewBox="0 0 50 50">
+                        <path d="M5,25 L15,20 L25,28 L35,15 L45,22" fill="none" stroke="#EC4899" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+                    </svg>
                     <div class="service-icon">⚡</div>
                     <h3>Smart Automation</h3>
                     <p>Automate appointment booking, follow-ups, and customer engagement. Free up hours every week.</p>
@@ -107,6 +146,9 @@
                 </div>
 
                 <div class="service-card">
+                    <svg class="card-doodle" width="50" height="50" viewBox="0 0 50 50">
+                        <rect x="10" y="10" width="30" height="30" fill="none" stroke="#10B981" stroke-width="1.5" stroke-dasharray="3,3" rx="5" opacity="0.5"/>
+                    </svg>
                     <div class="service-icon">📊</div>
                     <h3>Business Intelligence</h3>
                     <p>Know what's working and what's not. Real-time dashboards show your best customers and opportunities.</p>
@@ -114,6 +156,9 @@
                 </div>
 
                 <div class="service-card">
+                    <svg class="card-doodle" width="50" height="50" viewBox="0 0 50 50">
+                        <polygon points="25,5 30,20 45,20 33,28 38,43 25,35 12,43 17,28 5,20 20,20" fill="none" stroke="#ffd93d" stroke-width="1.5" opacity="0.5"/>
+                    </svg>
                     <div class="service-icon">🛡️</div>
                     <h3>Risk Prevention</h3>
                     <p>Test and train your systems before they go live. Practice here, not on real customers.</p>
