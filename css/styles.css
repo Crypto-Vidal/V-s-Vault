@@ -21,6 +21,8 @@
     --color-accent: #10B981;       /* Green */
     --color-warning: #F59E0B;      /* Amber */
     --color-highlight: #06B6D4;    /* Cyan */
+    --color-orange: #FF6B35;       /* Vibrant Orange */
+    --color-orange-light: #FF8A5B; /* Light Orange */
 
     /* Gradients for Fun */
     --gradient-primary: linear-gradient(135deg, #6366F1 0%, #8B5CF6 100%);
@@ -329,28 +331,11 @@ p {
     opacity: 1;
 }
 
-/* Mobile Menu Toggle */
-.mobile-menu-toggle {
-    display: block;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: var(--space-2);
-}
-
+/* Mobile Menu Toggle - SVG Doodle Version */
 @media (min-width: 1024px) {
     .mobile-menu-toggle {
-        display: none;
+        display: none !important;
     }
-}
-
-.mobile-menu-toggle span {
-    display: block;
-    width: 24px;
-    height: 1px;
-    background-color: var(--color-white);
-    margin: 6px 0;
-    transition: all var(--transition-base);
 }
 
 /* ==========================================
@@ -1381,4 +1366,275 @@ button:focus {
     :root {
         --border-color: rgba(255, 255, 255, 0.2);
     }
+}
+
+/* ==========================================
+   FUN DOODLE ILLUSTRATIONS
+   ========================================== */
+
+/* Menu Doodle Styles */
+.mobile-menu-toggle {
+    position: relative;
+    padding: 0;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu-doodle {
+    transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.mobile-menu-toggle:hover .menu-doodle {
+    transform: rotate(-5deg) scale(1.1);
+}
+
+.mobile-menu-toggle:active .menu-doodle {
+    transform: scale(0.95);
+}
+
+/* Menu line animations */
+.menu-line {
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.mobile-menu-toggle.active .line-1 {
+    transform: rotate(45deg);
+    transform-origin: center;
+    d: path("M12,20 L28,20");
+}
+
+.mobile-menu-toggle.active .line-2 {
+    opacity: 0;
+    transform: scale(0);
+}
+
+.mobile-menu-toggle.active .line-3 {
+    transform: rotate(-45deg);
+    transform-origin: center;
+    d: path("M12,20 L28,20");
+}
+
+/* Sparkle animations */
+.sparkle {
+    animation: sparkle 2s ease-in-out infinite;
+}
+
+.sparkle-1 {
+    animation-delay: 0s;
+}
+
+.sparkle-2 {
+    animation-delay: 0.6s;
+}
+
+.sparkle-3 {
+    animation-delay: 1.2s;
+}
+
+@keyframes sparkle {
+    0%, 100% {
+        opacity: 0.3;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.5);
+    }
+}
+
+/* Hero Doodles - Floating Illustrations */
+.hero-doodle {
+    position: absolute;
+    pointer-events: none;
+    opacity: 0.7;
+    z-index: 1;
+}
+
+.doodle-star-1 {
+    top: 15%;
+    right: 10%;
+    animation: float 6s ease-in-out infinite, spin 12s linear infinite;
+}
+
+.doodle-circle-1 {
+    top: 45%;
+    left: 5%;
+    animation: float 8s ease-in-out infinite;
+    animation-delay: -2s;
+}
+
+.doodle-squiggle-1 {
+    bottom: 20%;
+    right: 8%;
+    animation: float 7s ease-in-out infinite, wiggle 4s ease-in-out infinite;
+    animation-delay: -4s;
+}
+
+.doodle-arrow {
+    top: 30%;
+    right: 15%;
+    animation: float 5s ease-in-out infinite, bounce 2s ease-in-out infinite;
+    animation-delay: -1s;
+}
+
+.doodle-lightning {
+    bottom: 35%;
+    left: 10%;
+    animation: float 6s ease-in-out infinite, pulse 3s ease-in-out infinite;
+    animation-delay: -3s;
+}
+
+/* Title doodle underline */
+.title-doodle {
+    display: inline-block;
+    margin-left: 10px;
+    vertical-align: middle;
+    animation: draw 2s ease-in-out infinite;
+}
+
+/* Button doodle */
+.btn-doodle {
+    position: absolute;
+    right: -15px;
+    top: 50%;
+    transform: translateY(-50%);
+    animation: rotate 8s linear infinite;
+}
+
+.btn-primary-large {
+    position: relative;
+    overflow: visible;
+}
+
+/* Doodle Animations */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px) translateX(0px);
+    }
+    25% {
+        transform: translateY(-20px) translateX(10px);
+    }
+    50% {
+        transform: translateY(-10px) translateX(-10px);
+    }
+    75% {
+        transform: translateY(-15px) translateX(5px);
+    }
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes wiggle {
+    0%, 100% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(5deg);
+    }
+    75% {
+        transform: rotate(-5deg);
+    }
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 0.7;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.1);
+    }
+}
+
+@keyframes draw {
+    0%, 100% {
+        stroke-dashoffset: 0;
+    }
+    50% {
+        stroke-dashoffset: 10;
+    }
+}
+
+@keyframes rotate {
+    from {
+        transform: translateY(-50%) rotate(0deg);
+    }
+    to {
+        transform: translateY(-50%) rotate(360deg);
+    }
+}
+
+/* Mobile responsiveness for doodles */
+@media (max-width: 768px) {
+    .hero-doodle {
+        opacity: 0.4;
+        transform: scale(0.7);
+    }
+
+    .doodle-star-1,
+    .doodle-arrow {
+        display: none;
+    }
+}
+
+/* Hero section positioning for doodles */
+.hero-section {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Service Card Doodles */
+.service-card {
+    position: relative;
+    overflow: visible;
+}
+
+.card-doodle {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    pointer-events: none;
+    opacity: 0.6;
+    animation: float 4s ease-in-out infinite, rotate 10s linear infinite;
+}
+
+.service-card:nth-child(1) .card-doodle {
+    animation-delay: 0s;
+}
+
+.service-card:nth-child(2) .card-doodle {
+    animation-delay: -1s;
+}
+
+.service-card:nth-child(3) .card-doodle {
+    animation-delay: -2s;
+}
+
+.service-card:nth-child(4) .card-doodle {
+    animation-delay: -3s;
+}
+
+.service-card:hover .card-doodle {
+    opacity: 1;
+    animation-play-state: paused;
 }
