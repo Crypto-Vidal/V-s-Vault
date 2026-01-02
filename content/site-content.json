@@ -78,9 +78,7 @@
       { "text": "Home", "link": "index.html" },
       { "text": "About", "link": "about.html" },
       { "text": "Services", "link": "services.html" },
-      { "text": "Skills", "link": "skills.html" },
       { "text": "Portfolio", "link": "portfolio.html" },
-      { "text": "Tools", "link": "tools.html" },
       { "text": "Videos", "link": "videos.html" },
       { "text": "Contact", "link": "contact.html" },
       { "text": "Admin", "link": "#admin", "admin": true }
